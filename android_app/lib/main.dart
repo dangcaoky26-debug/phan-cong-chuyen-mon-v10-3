@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
@@ -29,96 +28,75 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const defaultUrl = String.fromEnvironment('APP_URL', defaultValue: '');
-  final _urlController = TextEditingController();
-  WebViewController? _webController;
-  bool _loadingSettings = true;
+  static final Uri appUri = Uri.parse('https://phan-cong-chuyen-mon-v10-3.onrender.com');
+  late final WebViewController _controller;
   String? _error;
+  int _progress = 0;
 
   @override
   void initState() {
     super.initState();
-    _loadSavedUrl();
-  }
-
-  Future<void> _loadSavedUrl() async {
-    final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getString('server_url') ?? defaultUrl;
-    _urlController.text = saved;
-    if (saved.isNotEmpty) {
-      await _open(saved, save: false);
-    }
-    if (mounted) setState(() => _loadingSettings = false);
-  }
-
-  Future<void> _open(String raw, {bool save = true}) async {
-    var url = raw.trim();
-    if (url.isEmpty) {
-      setState(() => _error = 'Hãy nhập địa chỉ web của phần mềm.');
-      return;
-    }
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      url = 'https://$url';
-      _urlController.text = url;
-    }
-    final uri = Uri.tryParse(url);
-    if (uri == null || uri.host.isEmpty) {
-      setState(() => _error = 'Địa chỉ web không hợp lệ.');
-      return;
-    }
-
-    if (save) {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('server_url', url);
-    }
-
-    final controller = WebViewController()
+    _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
         NavigationDelegate(
-          onPageStarted: (_) => mounted ? setState(() => _error = null) : null,
+          onProgress: (value) {
+            if (mounted) setState(() => _progress = value);
+          },
+          onPageStarted: (_) {
+            if (mounted) setState(() => _error = null);
+          },
+          onPageFinished: (_) {
+            if (mounted) setState(() => _progress = 100);
+          },
           onWebResourceError: (e) {
             if (mounted && e.isForMainFrame == true) {
-              setState(() => _error = 'Không kết nối được máy chủ: ${e.description}');
+              setState(() => _error = 'Chưa kết nối được máy chủ. Hãy bấm THỬ LẠI.');
             }
           },
         ),
       )
-      ..loadRequest(uri);
-
-    setState(() {
-      _webController = controller;
-      _error = null;
-    });
+      ..loadRequest(appUri);
   }
 
-  void _showSettings() {
-    setState(() => _webController = null);
+  Future<bool> _handleBack() async {
+    if (await _controller.canGoBack()) {
+      await _controller.goBack();
+      return false;
+    }
+    return true;
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_loadingSettings) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
-
-    final controller = _webController;
-    if (controller != null) {
-      return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) return;
+        final shouldPop = await _handleBack();
+        if (shouldPop && context.mounted) Navigator.of(context).pop();
+      },
+      child: Scaffold(
         appBar: AppBar(
           title: const Text('Phân công V10.3'),
           actions: [
             IconButton(
-              tooltip: 'Tải lại',
-              onPressed: () => controller.reload(),
-              icon: const Icon(Icons.refresh),
+              tooltip: 'Trang chính',
+              onPressed: () => _controller.loadRequest(appUri),
+              icon: const Icon(Icons.home_outlined),
             ),
             IconButton(
-              tooltip: 'Đổi máy chủ',
-              onPressed: _showSettings,
-              icon: const Icon(Icons.settings),
+              tooltip: 'Tải lại',
+              onPressed: () => _controller.reload(),
+              icon: const Icon(Icons.refresh),
             ),
           ],
+          bottom: _progress < 100
+              ? PreferredSize(
+                  preferredSize: const Size.fromHeight(3),
+                  child: LinearProgressIndicator(value: _progress / 100),
+                )
+              : null,
         ),
         body: Column(
           children: [
@@ -126,64 +104,14 @@ class _HomePageState extends State<HomePage> {
               MaterialBanner(
                 content: Text(_error!),
                 actions: [
-                  TextButton(onPressed: () => controller.reload(), child: const Text('THỬ LẠI')),
-                  TextButton(onPressed: _showSettings, child: const Text('ĐỔI URL')),
+                  TextButton(
+                    onPressed: () => _controller.loadRequest(appUri),
+                    child: const Text('THỬ LẠI'),
+                  ),
                 ],
               ),
-            Expanded(child: WebViewWidget(controller: controller)),
+            Expanded(child: WebViewWidget(controller: _controller)),
           ],
-        ),
-      );
-    }
-
-    return Scaffold(
-      appBar: AppBar(title: const Text('Phân công V10.3')),
-      body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 560),
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Icon(Icons.assignment_ind_outlined, size: 72),
-                const SizedBox(height: 18),
-                const Text(
-                  'Kết nối phần mềm Phân công chuyên môn',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 20),
-                TextField(
-                  controller: _urlController,
-                  keyboardType: TextInputType.url,
-                  autocorrect: false,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Địa chỉ máy chủ',
-                    hintText: 'https://ten-phan-mem.onrender.com',
-                  ),
-                  onSubmitted: (v) => _open(v),
-                ),
-                if (_error != null) ...[
-                  const SizedBox(height: 10),
-                  Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
-                ],
-                const SizedBox(height: 16),
-                FilledButton.icon(
-                  onPressed: () => _open(_urlController.text),
-                  icon: const Icon(Icons.open_in_browser),
-                  label: const Text('MỞ PHẦN MỀM'),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Địa chỉ sẽ được lưu trên thiết bị. Có thể đổi lại bằng nút Cài đặt trong ứng dụng.',
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
         ),
       ),
     );
