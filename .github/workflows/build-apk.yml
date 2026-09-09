@@ -1,0 +1,67 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'android_app/**'
+      - '.github/workflows/build-apk.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Create Android project
+        run: |
+          rm -rf apk_build
+          mkdir apk_build
+          cd apk_build
+          flutter create --platforms=android --org vn.edu.gdnn_gdtx_thanhphu --project-name phan_cong_v10_3 .
+          cp ../android_app/pubspec.yaml pubspec.yaml
+          cp ../android_app/lib/main.dart lib/main.dart
+
+      - name: Configure Android manifest
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('apk_build/android/app/src/main/AndroidManifest.xml')
+          s = p.read_text(encoding='utf-8')
+          perm = '<uses-permission android:name="android.permission.INTERNET" />'
+          if perm not in s:
+              s = s.replace('<manifest xmlns:android="http://schemas.android.com/apk/res/android">',
+                            '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n    ' + perm)
+          s = s.replace('<application', '<application android:usesCleartextTraffic="true"', 1)
+          s = s.replace('android:label="phan_cong_v10_3"', 'android:label="Phân công V10.3"')
+          p.write_text(s, encoding='utf-8')
+
+      - name: Get dependencies
+        working-directory: apk_build
+        run: flutter pub get
+
+      - name: Build release APK
+        working-directory: apk_build
+        run: flutter build apk --release
+
+      - name: Rename APK
+        run: cp apk_build/build/app/outputs/flutter-apk/app-release.apk PhanCongChuyenMon-V10.3.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: PhanCongChuyenMon-V10.3-APK
+          path: PhanCongChuyenMon-V10.3.apk
+          if-no-files-found: error
+          retention-days: 30
