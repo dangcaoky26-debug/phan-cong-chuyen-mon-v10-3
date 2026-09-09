@@ -1,0 +1,10 @@
+V10.3 PERFORMANCE
+- Giữ toàn bộ sửa lỗi V10.2.
+- Thêm cache ma trận tải giáo viên × tuần.
+- teacher_load_at_week dùng cache cho truy vấn chuẩn.
+- teacher_max_load dùng cache.
+- Dashboard/Heatmap dùng chung ma trận tải.
+- Cache tự invalid sau thao tác nghiệp vụ, đổi năm, restore snapshot, optimizer.
+- Frontend chuyển sang lazy render: chỉ render trang đang mở.
+- Kết quả tải V10.2 và V10.3 đã đối chiếu 27 GV × 35 tuần: sai khác 0.
+- Cổng 8812, DB phan_cong_v10_3.db.

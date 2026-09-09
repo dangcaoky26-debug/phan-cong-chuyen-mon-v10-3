@@ -1,0 +1,22 @@
+BÁO CÁO HIỆU NĂNG V10.3
+========================
+Dữ liệu kiểm thử: 27 giáo viên, 17 lớp, 35 tuần.
+
+Đo qua HTTP localhost:
+- V10.2 /api/state tuần 1: ~2,44 giây
+- V10.3 /api/state tuần 1 (lần đầu): ~0,35 giây
+- V10.3 /api/state tuần 2 (cache đã có): ~0,08 giây
+
+- V10.2 /api/dashboard: ~2,84 giây
+- V10.3 /api/dashboard: ~0,014 giây sau khi ma trận tải đã được cache
+
+Đối chiếu kết quả tính tải:
+- 27 GV × 35 tuần × các trường teaching/review/role/homeroom/total/standard/diff
+- Sai khác giữa V10.2 và V10.3: 0
+
+Tối ưu chính:
+1. Cache ma trận tải GV × tuần.
+2. Dashboard/Heatmap dùng chung cache.
+3. Cache tự vô hiệu khi database thay đổi.
+4. Chỉ render trang đang mở trên trình duyệt.
+5. Không render lại đồng thời Dashboard, TKB, Đội ngũ, Chương trình... sau mỗi thao tác.

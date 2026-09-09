@@ -1,0 +1,46 @@
+PHẦN MỀM PHÂN CÔNG CHUYÊN MÔN V10.3 PERFORMANCE
+===================================================
+
+MỤC TIÊU CHÍNH: TỐI ƯU TỐC ĐỘ
+
+V10.3 giữ nguyên toàn bộ chức năng của V10.2, đặc biệt:
+- Lịch sử: T1-17 = 2 tiết/tuần; T18-35 = 1 tiết/tuần.
+- Xuất HKI/HKII đúng phạm vi.
+- Đội ngũ hiển thị lớp đang dạy theo tuần.
+- TKB PDF/Excel, phương án, tối ưu, Guard, CN/KN, biến động nhân sự, báo cáo...
+
+CÁC TỐI ƯU V10.3
+1. CACHE MA TRẬN TẢI 27 GV × 35 TUẦN
+- Trước đây cùng một tải tuần bị tính lại rất nhiều lần.
+- V10.3 tính một lần rồi Dashboard, Heatmap, Cao nhất năm, Dư/thiếu, Ghi chú biến động dùng chung.
+- Cache tự xóa khi có thay đổi nghiệp vụ.
+
+2. DASHBOARD KHÔNG CÒN TÍNH HEATMAP 3 LẦN/Ô
+- Heatmap lấy trực tiếp từ ma trận tải đã cache.
+
+3. CHỈ RENDER TRANG ĐANG MỞ
+- Trước đây sau mỗi reload, trình duyệt dựng lại Đội ngũ, Lớp, Chương trình, Phân công, TKB, Dashboard... cùng lúc.
+- V10.3 chỉ dựng đúng màn hình đang xem.
+- Khi chuyển trang mới dựng trang đó.
+
+4. KHÔNG THAY ĐỔI KẾT QUẢ TÍNH
+- Đã đối chiếu toàn bộ tải 27 GV × 35 tuần giữa V10.2 và V10.3.
+- Sai khác: 0.
+
+ĐO HIỆU NĂNG TRÊN DỮ LIỆU HIỆN TẠI
+- V10.2 Dashboard: khoảng 3,08 giây/lần.
+- V10.3 Dashboard lần đầu: khoảng 0,11-0,15 giây.
+- V10.3 Dashboard các lần sau: khoảng 0,01-0,02 giây.
+- V10.2 workload notes: khoảng 0,79 giây.
+- V10.3 workload notes: khoảng 0,005 giây sau khi cache có dữ liệu.
+- Khối dữ liệu tương đương /api/state sau cache: khoảng 0,07-0,09 giây trong kiểm thử trực tiếp.
+
+CÁCH CHẠY
+1. Giải nén ZIP.
+2. Nhấp đôi CHAY_PHAN_CONG_V10_3.bat.
+3. Trình duyệt mở tại http://127.0.0.1:8812
+4. Dùng nút Thoát trên giao diện để dừng.
+
+DATABASE
+- V10.3 dùng database riêng: phan_cong_v10_3.db
+- ZIP không chứa database thử.

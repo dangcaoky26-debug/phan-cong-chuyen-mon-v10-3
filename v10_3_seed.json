@@ -1,0 +1,3298 @@
+{
+  "active_year": "2026-2027",
+  "settings": {
+    "weeks": 35,
+    "teacher_per_class": 2.25,
+    "default_teacher_standard": 17,
+    "review_periods_per_week": 3,
+    "sources": {
+      "program": "TT 12/2022/TT-BGDĐT",
+      "staffing": "TT 20/2023/TT-BGDĐT",
+      "teacher_load": "TT 04/2026/TT-BGDĐT"
+    },
+    "program_source_title": "Chương trình GDTX cấp THPT",
+    "program_source": "TT 12/2022/TT-BGDĐT",
+    "semester1_weeks": 18,
+    "semester2_weeks": 17
+  },
+  "teachers": [
+    {
+      "stt": 1,
+      "name": "Đặng Hữu Phước",
+      "primary_subject": "TN-HN",
+      "can_teach": [
+        "TN-HN"
+      ],
+      "standard": "1,36",
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "Giám đốc",
+      "role_credit": 0,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "12F",
+      "source_teach_periods": 3,
+      "source_total": 3,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 2,
+      "name": "Trương Hoài Sơn",
+      "primary_subject": "Vật lý",
+      "can_teach": [
+        "Vật lý"
+      ],
+      "standard": "1,7",
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "P.Giám đốc",
+      "role_credit": 0,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "12B, 12F",
+      "source_teach_periods": 5,
+      "source_total": 5,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 3,
+      "name": "Phạm Thị Cẩm",
+      "primary_subject": "GDKTPL",
+      "can_teach": [
+        "GDKTPL"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "12B",
+      "homeroom_credit": 4,
+      "source_assignment": "10A,B,C,E; 12A, 12B, 12F",
+      "source_teach_periods": 16,
+      "source_total": 20,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 4,
+      "name": "Nguyễn Thị Ngọc Trâm",
+      "primary_subject": "GDKTPL",
+      "can_teach": [
+        "GDKTPL",
+        "TNHN"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "11A, 11B; 10D; TNHN: 12A,10B, 10C, 11E",
+      "source_teach_periods": 18,
+      "source_total": 18,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 5,
+      "name": "Nguyễn Thị Lan",
+      "primary_subject": "Hóa học",
+      "can_teach": [
+        "Hóa học"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "12D",
+      "homeroom_credit": 4,
+      "source_assignment": "12A,12C,12D,12E; 10C,D,E",
+      "source_teach_periods": 18,
+      "source_total": 22,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 6,
+      "name": "Trương Thị Thúy Ngọc",
+      "primary_subject": "Hóa học",
+      "can_teach": [
+        "Hóa học",
+        "TNHN"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "Phó BT.ĐTN",
+      "role_credit": 5.95,
+      "homeroom": "11B",
+      "homeroom_credit": 4,
+      "source_assignment": "12B,11A, 11B\nTNHN: 11B",
+      "source_teach_periods": 12,
+      "source_total": 21.95,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 7,
+      "name": "Đặng Cao Kỵ",
+      "primary_subject": "Hóa học",
+      "can_teach": [
+        "Hóa học"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "TT.KHTN",
+      "role_credit": 4,
+      "homeroom": "12G",
+      "homeroom_credit": 4,
+      "source_assignment": "12F, 12G, 11C, 11D, 11E",
+      "source_teach_periods": 14,
+      "source_total": 22,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 8,
+      "name": "Đặng Văn Chính",
+      "primary_subject": "Toán học",
+      "can_teach": [
+        "Toán học"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "12E",
+      "homeroom_credit": 4,
+      "source_assignment": "10D, 12D, 12E, 12F, Ôn TN 3 lớp",
+      "source_teach_periods": 19,
+      "source_total": 23,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 9,
+      "name": "Nguyễn Thị Huyền Trang",
+      "primary_subject": "Toán học",
+      "can_teach": [
+        "Toán học"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "TTr.Nhân dân",
+      "role_credit": 2,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "12A, 12B, 12G, 11E, Ôn TN 3 lớp",
+      "source_teach_periods": 20,
+      "source_total": 22,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 10,
+      "name": "Phạm Thị Trúc Ngân",
+      "primary_subject": "Toán học",
+      "can_teach": [
+        "Toán học"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "10C",
+      "homeroom_credit": 4,
+      "source_assignment": "12C, 10A,B,C, Ôn TN 1 lớp",
+      "source_teach_periods": 17,
+      "source_total": 21,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 11,
+      "name": "Nguyễn Minh Tuấn",
+      "primary_subject": "Toán học",
+      "can_teach": [
+        "Toán học"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "11A, B, C,D, 10E",
+      "source_teach_periods": 20,
+      "source_total": 20,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 13,
+      "name": "Nguyễn Hoài Tâm",
+      "primary_subject": "Vật lý",
+      "can_teach": [
+        "Vật lý",
+        "TNHN"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "10A",
+      "homeroom_credit": 4,
+      "source_assignment": "12A, 10A, 10B, 11C, 11D, 11E, TNHN:10A",
+      "source_teach_periods": 16,
+      "source_total": 20,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 14,
+      "name": "Phạm Thị Cương",
+      "primary_subject": "Tin học",
+      "can_teach": [
+        "Tin học"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "QL.CNTT",
+      "role_credit": 3,
+      "homeroom": "10B",
+      "homeroom_credit": 4,
+      "source_assignment": "12C, 12D, 12E, 12G, 10B",
+      "source_teach_periods": 13,
+      "source_total": 20,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 15,
+      "name": "Hồ Thị Dứa",
+      "primary_subject": "Tin học",
+      "can_teach": [
+        "Tin học",
+        "TNHN"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "11C, 11D, 11E, 10A, TNHN: 12E, 11A, 11C",
+      "source_teach_periods": 17,
+      "source_total": 17,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 16,
+      "name": "Trần Thị Ngọc Tuyền",
+      "primary_subject": "Sinh học",
+      "can_teach": [
+        "Sinh học"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "TP.KHTN",
+      "role_credit": 2,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "12C, 12D, 12E, 12G, 11A, 11B, 10C, 10D, 10E",
+      "source_teach_periods": 21,
+      "source_total": 23,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 17,
+      "name": "Trần Văn Dũng",
+      "primary_subject": "Ngữ văn",
+      "can_teach": [
+        "Ngữ văn"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "12F",
+      "homeroom_credit": 4,
+      "source_assignment": "12E, 12F, 12D; Ôn thi Tn 3 lớp",
+      "source_teach_periods": 16,
+      "source_total": 20,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 18,
+      "name": "Ngô Thị Kim Nhi",
+      "primary_subject": "Ngữ văn",
+      "can_teach": [
+        "Ngữ văn"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "12A",
+      "homeroom_credit": 4,
+      "source_assignment": " 12A, 12B, 12G; Ôn TN 3lớp",
+      "source_teach_periods": 16,
+      "source_total": 20,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 19,
+      "name": "Phạm Thị Phương Huỳnh",
+      "primary_subject": "Ngữ văn",
+      "can_teach": [
+        "Ngữ văn",
+        "TNHN"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "12C; 10A,B; 11E; Ôn TN 1lớp;TNHN 11D",
+      "source_teach_periods": 20,
+      "source_total": 20,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 20,
+      "name": "Nguyễn Thị Thu Hằng",
+      "primary_subject": "Lịch sử",
+      "can_teach": [
+        "Lịch sử"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "12C",
+      "homeroom_credit": 4,
+      "source_assignment": "12A,B,C,D; 10A,B,C, D, E; 11D",
+      "source_teach_periods": 22,
+      "source_total": 20,
+      "note": "Tháng 11 phân công lại",
+      "active": 1
+    },
+    {
+      "stt": 21,
+      "name": "Điều Thành Luân",
+      "primary_subject": "Lịch sử",
+      "can_teach": [
+        "Lịch sử"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "PBT.ĐTN",
+      "role_credit": "5,95",
+      "homeroom": "11A",
+      "homeroom_credit": 4,
+      "source_assignment": "12E, F,12G; 11A,B,C,E",
+      "source_teach_periods": 15,
+      "source_total": "24,95",
+      "note": "Tháng 11 phân công lại",
+      "active": 1
+    },
+    {
+      "stt": 22,
+      "name": "Nguyễn Minh Triệu",
+      "primary_subject": "Địa lí",
+      "can_teach": [
+        "Địa lí"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "TP.KHXH",
+      "role_credit": 2,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "12A,B, C,D, E,F; 11A",
+      "source_teach_periods": 15,
+      "source_total": 17,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 23,
+      "name": "Phan Thị Vui",
+      "primary_subject": "Địa lí",
+      "can_teach": [
+        "Địa lí"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "11D",
+      "homeroom_credit": 4,
+      "source_assignment": " 10C,D,E;11D; 12G",
+      "source_teach_periods": 13,
+      "source_total": 17,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 24,
+      "name": "Nguyễn Thanh Hoài",
+      "primary_subject": "TN-HN",
+      "can_teach": [
+        "TN-HN"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "BT.ĐTN, QL.TB",
+      "role_credit": 14.9,
+      "homeroom": "10E",
+      "homeroom_credit": 4,
+      "source_assignment": "10E",
+      "source_teach_periods": 7,
+      "source_total": 21.9,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 25,
+      "name": "Hồ Văn Trãi",
+      "primary_subject": "TNHN",
+      "can_teach": [
+        "TNHN"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "Tổ phó KHTN",
+      "role_credit": 2,
+      "homeroom": "10D",
+      "homeroom_credit": 4,
+      "source_assignment": "10D; 12B,C,D",
+      "source_teach_periods": 12,
+      "source_total": 18,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 26,
+      "name": "Nguyễn Yến Như",
+      "primary_subject": "Ngữ văn",
+      "can_teach": [
+        "Ngữ văn"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "11C",
+      "homeroom_credit": 4,
+      "source_assignment": "10C,D; 11C, 11D",
+      "source_teach_periods": 16,
+      "source_total": 20,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 27,
+      "name": "Nguyễn Thị Thu Tâm",
+      "primary_subject": "Ngữ văn",
+      "can_teach": [
+        "Ngữ văn"
+      ],
+      "standard": 17,
+      "employment_type": "Thỉnh giảng",
+      "active_start": 1,
+      "active_end": 18,
+      "role": "Thỉnh giảng HKI",
+      "role_credit": 0,
+      "homeroom": "",
+      "homeroom_credit": 0,
+      "source_assignment": "10E;11A,11B",
+      "source_teach_periods": 12,
+      "source_total": 12,
+      "note": "",
+      "active": 1
+    },
+    {
+      "stt": 28,
+      "name": "Đặng Tiểu Bình",
+      "primary_subject": "Địa lí",
+      "can_teach": [
+        "Địa lí",
+        "TNHN"
+      ],
+      "standard": 17,
+      "employment_type": "Cơ hữu",
+      "active_start": 1,
+      "active_end": 35,
+      "role": "",
+      "role_credit": 0,
+      "homeroom": "11E",
+      "homeroom_credit": 4,
+      "source_assignment": "11E, B, C; 10A, 10B; TNHN 12G",
+      "source_teach_periods": 17,
+      "source_total": 17,
+      "note": "",
+      "active": 1
+    }
+  ],
+  "classes": [
+    {
+      "class_name": "10A",
+      "grade": 10,
+      "program_name": "Tổ hợp 1",
+      "homeroom_teacher": "Nguyễn Hoài Tâm",
+      "active": 1,
+      "template_name": "Tổ hợp 1"
+    },
+    {
+      "class_name": "10B",
+      "grade": 10,
+      "program_name": "Tổ hợp 1",
+      "homeroom_teacher": "Phạm Thị Cương",
+      "active": 1,
+      "template_name": "Tổ hợp 1"
+    },
+    {
+      "class_name": "10C",
+      "grade": 10,
+      "program_name": "Tổ hợp 2",
+      "homeroom_teacher": "Phạm Thị Trúc Ngân",
+      "active": 1,
+      "template_name": "Tổ hợp 2"
+    },
+    {
+      "class_name": "10D",
+      "grade": 10,
+      "program_name": "Tổ hợp 2",
+      "homeroom_teacher": "Hồ Văn Trãi",
+      "active": 1,
+      "template_name": "Tổ hợp 2"
+    },
+    {
+      "class_name": "10E",
+      "grade": 10,
+      "program_name": "Tổ hợp 2",
+      "homeroom_teacher": "Nguyễn Thanh Hoài",
+      "active": 1,
+      "template_name": "Tổ hợp 2"
+    },
+    {
+      "class_name": "11A",
+      "grade": 11,
+      "program_name": "Tổ hợp 11A",
+      "homeroom_teacher": "Điều Thành Luân",
+      "active": 1,
+      "template_name": "Tổ hợp 11A"
+    },
+    {
+      "class_name": "11B",
+      "grade": 11,
+      "program_name": "Tổ hợp 11A",
+      "homeroom_teacher": "Trương Thị Thúy Ngọc",
+      "active": 1,
+      "template_name": "Tổ hợp 11A"
+    },
+    {
+      "class_name": "11C",
+      "grade": 11,
+      "program_name": "Tổ hợp 11B",
+      "homeroom_teacher": "Nguyễn Yến Như",
+      "active": 1,
+      "template_name": "Tổ hợp 11B"
+    },
+    {
+      "class_name": "11D",
+      "grade": 11,
+      "program_name": "Tổ hợp 11B",
+      "homeroom_teacher": "Phan Thị Vui",
+      "active": 1,
+      "template_name": "Tổ hợp 11B"
+    },
+    {
+      "class_name": "11E",
+      "grade": 11,
+      "program_name": "Tổ hợp 11B",
+      "homeroom_teacher": "Đặng Tiểu Bình",
+      "active": 1,
+      "template_name": "Tổ hợp 11B"
+    },
+    {
+      "class_name": "12A",
+      "grade": 12,
+      "program_name": "Tổ hợp 12A",
+      "homeroom_teacher": "Ngô Thị Kim Nhi",
+      "active": 1,
+      "template_name": "Tổ hợp 12A"
+    },
+    {
+      "class_name": "12B",
+      "grade": 12,
+      "program_name": "Tổ hợp 12A",
+      "homeroom_teacher": "Phạm Thị Cẩm",
+      "active": 1,
+      "template_name": "Tổ hợp 12A"
+    },
+    {
+      "class_name": "12C",
+      "grade": 12,
+      "program_name": "Tổ hợp 12B",
+      "homeroom_teacher": "Nguyễn Thị Thu Hằng",
+      "active": 1,
+      "template_name": "Tổ hợp 12B"
+    },
+    {
+      "class_name": "12D",
+      "grade": 12,
+      "program_name": "Tổ hợp 12B",
+      "homeroom_teacher": "Nguyễn Thị Lan",
+      "active": 1,
+      "template_name": "Tổ hợp 12B"
+    },
+    {
+      "class_name": "12E",
+      "grade": 12,
+      "program_name": "Tổ hợp 12B",
+      "homeroom_teacher": "Đặng Văn Chính",
+      "active": 1,
+      "template_name": "Tổ hợp 12B"
+    },
+    {
+      "class_name": "12F",
+      "grade": 12,
+      "program_name": "Tổ hợp 12F",
+      "homeroom_teacher": "Trần Văn Dũng",
+      "active": 1,
+      "template_name": "Tổ hợp 12F"
+    },
+    {
+      "class_name": "12G",
+      "grade": 12,
+      "program_name": "Tổ hợp 12G",
+      "homeroom_teacher": "Đặng Cao Kỵ",
+      "active": 1,
+      "template_name": "Tổ hợp 12G"
+    }
+  ],
+  "program_rules": [
+    {
+      "subject": "Ngữ văn",
+      "base_hours": 105,
+      "specialty_hours": 35,
+      "can_specialty": 1,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 3
+        }
+      ],
+      "specialty_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "legal_locked": 1
+    },
+    {
+      "subject": "Toán học",
+      "base_hours": 105,
+      "specialty_hours": 35,
+      "can_specialty": 1,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 3
+        }
+      ],
+      "specialty_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "legal_locked": 1
+    },
+    {
+      "subject": "Lịch sử",
+      "base_hours": 52,
+      "specialty_hours": 35,
+      "can_specialty": 1,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 17,
+          "periods": 2
+        },
+        {
+          "start": 18,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "specialty_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "legal_locked": 1
+    },
+    {
+      "subject": "Địa lí",
+      "base_hours": 70,
+      "specialty_hours": 35,
+      "can_specialty": 1,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 2
+        }
+      ],
+      "specialty_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "legal_locked": 1
+    },
+    {
+      "subject": "GDKTPL",
+      "base_hours": 70,
+      "specialty_hours": 35,
+      "can_specialty": 1,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 2
+        }
+      ],
+      "specialty_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "legal_locked": 1
+    },
+    {
+      "subject": "Vật lý",
+      "base_hours": 70,
+      "specialty_hours": 35,
+      "can_specialty": 1,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 2
+        }
+      ],
+      "specialty_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "legal_locked": 1
+    },
+    {
+      "subject": "Hóa học",
+      "base_hours": 70,
+      "specialty_hours": 35,
+      "can_specialty": 1,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 2
+        }
+      ],
+      "specialty_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "legal_locked": 1
+    },
+    {
+      "subject": "Sinh học",
+      "base_hours": 70,
+      "specialty_hours": 35,
+      "can_specialty": 1,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 2
+        }
+      ],
+      "specialty_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "legal_locked": 1
+    },
+    {
+      "subject": "Tin học",
+      "base_hours": 70,
+      "specialty_hours": 35,
+      "can_specialty": 1,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 2
+        }
+      ],
+      "specialty_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "legal_locked": 1
+    },
+    {
+      "subject": "TNHN",
+      "base_hours": 105,
+      "specialty_hours": 0,
+      "can_specialty": 0,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 3
+        }
+      ],
+      "specialty_schedule": [],
+      "legal_locked": 1
+    },
+    {
+      "subject": "GD địa phương",
+      "base_hours": 35,
+      "specialty_hours": 0,
+      "can_specialty": 0,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 1
+        }
+      ],
+      "specialty_schedule": [],
+      "legal_locked": 1
+    },
+    {
+      "subject": "Ngoại ngữ",
+      "base_hours": 105,
+      "specialty_hours": 0,
+      "can_specialty": 0,
+      "source": "TT 12/2022/TT-BGDĐT",
+      "core_schedule": [
+        {
+          "start": 1,
+          "end": 35,
+          "periods": 3
+        }
+      ],
+      "specialty_schedule": [],
+      "legal_locked": 1
+    }
+  ],
+  "requirements": [
+    {
+      "class_name": "12F",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Đặng Hữu Phước",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "Vật lý",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trương Hoài Sơn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "Vật lý",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Trương Hoài Sơn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12F",
+      "subject": "Vật lý",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trương Hoài Sơn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10A",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cẩm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10B",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cẩm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10C",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cẩm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10E",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cẩm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cẩm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "GDKTPL",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Cẩm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12B",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cẩm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "GDKTPL",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Cẩm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12F",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cẩm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Ngọc Trâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10B",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Ngọc Trâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10C",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Ngọc Trâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11E",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Ngọc Trâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11A",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Ngọc Trâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11B",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Ngọc Trâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10D",
+      "subject": "GDKTPL",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Ngọc Trâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10C",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10D",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10E",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Thị Lan",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11B",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Trương Thị Thúy Ngọc",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trương Thị Thúy Ngọc",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Trương Thị Thúy Ngọc",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11A",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trương Thị Thúy Ngọc",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11A",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Trương Thị Thúy Ngọc",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11B",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trương Thị Thúy Ngọc",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11B",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Trương Thị Thúy Ngọc",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12F",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Cao Kỵ",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Cao Kỵ",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Đặng Cao Kỵ",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Cao Kỵ",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Đặng Cao Kỵ",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Cao Kỵ",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Đặng Cao Kỵ",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Hóa học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Cao Kỵ",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Hóa học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Đặng Cao Kỵ",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10D",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Đặng Văn Chính",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10D",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Đặng Văn Chính",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Đặng Văn Chính",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Đặng Văn Chính",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12F",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Đặng Văn Chính",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Huyền Trang",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Huyền Trang",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Huyền Trang",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Huyền Trang",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Huyền Trang",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Huyền Trang",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Phạm Thị Trúc Ngân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10A",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Phạm Thị Trúc Ngân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10A",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Trúc Ngân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10B",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Phạm Thị Trúc Ngân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10B",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Trúc Ngân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10C",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Phạm Thị Trúc Ngân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10C",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Trúc Ngân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11A",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11A",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11B",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11B",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10E",
+      "subject": "Toán học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10E",
+      "subject": "Toán học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Minh Tuấn",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10A",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Hoài Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "Vật lý",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Hoài Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "Vật lý",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Hoài Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10A",
+      "subject": "Vật lý",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Hoài Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10B",
+      "subject": "Vật lý",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Hoài Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Vật lý",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Hoài Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Vật lý",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Hoài Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Vật lý",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Hoài Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Tin học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cương",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Tin học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Cương",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Tin học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cương",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Tin học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Cương",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Tin học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cương",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Tin học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Cương",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Tin học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cương",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10B",
+      "subject": "Tin học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phạm Thị Cương",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12E",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Hồ Thị Dứa",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11A",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Hồ Thị Dứa",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11C",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Hồ Thị Dứa",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Tin học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Hồ Thị Dứa",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Tin học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Hồ Thị Dứa",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Tin học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Hồ Thị Dứa",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10A",
+      "subject": "Tin học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Hồ Thị Dứa",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Sinh học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Sinh học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Sinh học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Sinh học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Sinh học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Sinh học",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Sinh học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11A",
+      "subject": "Sinh học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11B",
+      "subject": "Sinh học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10C",
+      "subject": "Sinh học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10D",
+      "subject": "Sinh học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10E",
+      "subject": "Sinh học",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Trần Thị Ngọc Tuyền",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Trần Văn Dũng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12F",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Trần Văn Dũng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12F",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Trần Văn Dũng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Trần Văn Dũng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Ngô Thị Kim Nhi",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Ngô Thị Kim Nhi",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Ngô Thị Kim Nhi",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Ngô Thị Kim Nhi",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11D",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Phạm Thị Phương Huỳnh",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Phạm Thị Phương Huỳnh",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10A",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Phạm Thị Phương Huỳnh",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10A",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Phương Huỳnh",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10B",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Phạm Thị Phương Huỳnh",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10B",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Phương Huỳnh",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Phạm Thị Phương Huỳnh",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phạm Thị Phương Huỳnh",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12A",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10A",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10A",
+      "subject": "Lịch sử",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10B",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10B",
+      "subject": "Lịch sử",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10C",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10D",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10E",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Nguyễn Thị Thu Hằng",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Điều Thành Luân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12F",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Điều Thành Luân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12F",
+      "subject": "Lịch sử",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Điều Thành Luân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Điều Thành Luân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11A",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Điều Thành Luân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11B",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Điều Thành Luân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Điều Thành Luân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Lịch sử",
+      "req_type": "Cốt lõi",
+      "annual_hours": 52,
+      "teacher": "Điều Thành Luân",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12A",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Minh Triệu",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Minh Triệu",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12C",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Minh Triệu",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12D",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Minh Triệu",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12E",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Minh Triệu",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12F",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Minh Triệu",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12F",
+      "subject": "Địa lí",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Minh Triệu",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11A",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Nguyễn Minh Triệu",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10C",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phan Thị Vui",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10C",
+      "subject": "Địa lí",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phan Thị Vui",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10D",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phan Thị Vui",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10D",
+      "subject": "Địa lí",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phan Thị Vui",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10E",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phan Thị Vui",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10E",
+      "subject": "Địa lí",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Phan Thị Vui",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phan Thị Vui",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12G",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Phan Thị Vui",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10E",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thanh Hoài",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10D",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Hồ Văn Trãi",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12B",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Hồ Văn Trãi",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12C",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Hồ Văn Trãi",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "12D",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Hồ Văn Trãi",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10C",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Yến Như",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10C",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Yến Như",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10D",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Yến Như",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10D",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Yến Như",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Yến Như",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Yến Như",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Yến Như",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11D",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Yến Như",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "10E",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Thu Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10E",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Thu Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11A",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Thu Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11A",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Thu Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "11B",
+      "subject": "Ngữ văn",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Nguyễn Thị Thu Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11B",
+      "subject": "Ngữ văn",
+      "req_type": "Chuyên đề",
+      "annual_hours": 35,
+      "teacher": "Nguyễn Thị Thu Tâm",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Chuyên đề theo bảng nguồn"
+    },
+    {
+      "class_name": "12G",
+      "subject": "TNHN",
+      "req_type": "Cốt lõi",
+      "annual_hours": 105,
+      "teacher": "Đặng Tiểu Bình",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11E",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Tiểu Bình",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11B",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Tiểu Bình",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "11C",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Tiểu Bình",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10A",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Tiểu Bình",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    },
+    {
+      "class_name": "10B",
+      "subject": "Địa lí",
+      "req_type": "Cốt lõi",
+      "annual_hours": 70,
+      "teacher": "Đặng Tiểu Bình",
+      "start_week": 1,
+      "end_week": 35,
+      "note": "Tách từ phân công hiện tại"
+    }
+  ],
+  "review_jobs": [
+    {
+      "teacher": "Đặng Văn Chính",
+      "subject": "Toán học",
+      "classes": [],
+      "periods_per_week": 3,
+      "start_week": null,
+      "end_week": 35,
+      "note": "Tuần bắt đầu chưa xác định · Nguồn cũ: Ôn TN 3 lớp"
+    },
+    {
+      "teacher": "Nguyễn Thị Huyền Trang",
+      "subject": "Toán học",
+      "classes": [],
+      "periods_per_week": 3,
+      "start_week": null,
+      "end_week": 35,
+      "note": "Tuần bắt đầu chưa xác định · Nguồn cũ: Ôn TN 3 lớp"
+    },
+    {
+      "teacher": "Phạm Thị Trúc Ngân",
+      "subject": "Toán học",
+      "classes": [],
+      "periods_per_week": 3,
+      "start_week": null,
+      "end_week": 35,
+      "note": "Tuần bắt đầu chưa xác định · Nguồn cũ: Ôn TN 1 lớp"
+    },
+    {
+      "teacher": "Trần Văn Dũng",
+      "subject": "Ngữ văn",
+      "classes": [],
+      "periods_per_week": 3,
+      "start_week": null,
+      "end_week": 35,
+      "note": "Tuần bắt đầu chưa xác định · Nguồn cũ: Ôn thi Tn 3 lớp"
+    },
+    {
+      "teacher": "Ngô Thị Kim Nhi",
+      "subject": "Ngữ văn",
+      "classes": [],
+      "periods_per_week": 3,
+      "start_week": null,
+      "end_week": 35,
+      "note": "Tuần bắt đầu chưa xác định · Nguồn cũ: Ôn TN 3lớp"
+    },
+    {
+      "teacher": "Phạm Thị Phương Huỳnh",
+      "subject": "Ngữ văn",
+      "classes": [],
+      "periods_per_week": 3,
+      "start_week": null,
+      "end_week": 35,
+      "note": "Tuần bắt đầu chưa xác định · Nguồn cũ: Ôn TN 1lớp"
+    }
+  ],
+  "templates": [
+    {
+      "name": "Tổ hợp 1",
+      "grade": 10,
+      "items": [
+        {
+          "subject": "GDKTPL",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Lịch sử",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Ngữ văn",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "TNHN",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Tin học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Toán học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Vật lý",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Địa lí",
+          "core": 1,
+          "specialty": 0
+        }
+      ],
+      "active": 1,
+      "note": "Khởi tạo từ cấu trúc phân công hiện tại"
+    },
+    {
+      "name": "Tổ hợp 2",
+      "grade": 10,
+      "items": [
+        {
+          "subject": "GDKTPL",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Hóa học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Lịch sử",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Ngữ văn",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Sinh học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "TNHN",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Toán học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Địa lí",
+          "core": 1,
+          "specialty": 1
+        }
+      ],
+      "active": 1,
+      "note": "Khởi tạo từ cấu trúc phân công hiện tại"
+    },
+    {
+      "name": "Tổ hợp 11A",
+      "grade": 11,
+      "items": [
+        {
+          "subject": "GDKTPL",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Hóa học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Lịch sử",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Ngữ văn",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Sinh học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "TNHN",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Toán học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Địa lí",
+          "core": 1,
+          "specialty": 0
+        }
+      ],
+      "active": 1,
+      "note": "Khởi tạo từ cấu trúc phân công hiện tại"
+    },
+    {
+      "name": "Tổ hợp 11B",
+      "grade": 11,
+      "items": [
+        {
+          "subject": "Hóa học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Lịch sử",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Ngữ văn",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "TNHN",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Tin học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Toán học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Vật lý",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Địa lí",
+          "core": 1,
+          "specialty": 0
+        }
+      ],
+      "active": 1,
+      "note": "Khởi tạo từ cấu trúc phân công hiện tại"
+    },
+    {
+      "name": "Tổ hợp 12A",
+      "grade": 12,
+      "items": [
+        {
+          "subject": "GDKTPL",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Hóa học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Lịch sử",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Ngữ văn",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "TNHN",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Toán học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Vật lý",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Địa lí",
+          "core": 1,
+          "specialty": 0
+        }
+      ],
+      "active": 1,
+      "note": "Khởi tạo từ cấu trúc phân công hiện tại"
+    },
+    {
+      "name": "Tổ hợp 12B",
+      "grade": 12,
+      "items": [
+        {
+          "subject": "Hóa học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Lịch sử",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Ngữ văn",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Sinh học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "TNHN",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Tin học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Toán học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Địa lí",
+          "core": 1,
+          "specialty": 0
+        }
+      ],
+      "active": 1,
+      "note": "Khởi tạo từ cấu trúc phân công hiện tại"
+    },
+    {
+      "name": "Tổ hợp 12F",
+      "grade": 12,
+      "items": [
+        {
+          "subject": "GDKTPL",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Hóa học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Lịch sử",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Ngữ văn",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "TNHN",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Toán học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Vật lý",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Địa lí",
+          "core": 1,
+          "specialty": 1
+        }
+      ],
+      "active": 1,
+      "note": "Khởi tạo từ cấu trúc phân công hiện tại"
+    },
+    {
+      "name": "Tổ hợp 12G",
+      "grade": 12,
+      "items": [
+        {
+          "subject": "Hóa học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Lịch sử",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Ngữ văn",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Sinh học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "TNHN",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Tin học",
+          "core": 1,
+          "specialty": 0
+        },
+        {
+          "subject": "Toán học",
+          "core": 1,
+          "specialty": 1
+        },
+        {
+          "subject": "Địa lí",
+          "core": 1,
+          "specialty": 0
+        }
+      ],
+      "active": 1,
+      "note": "Khởi tạo từ cấu trúc phân công hiện tại"
+    }
+  ]
+}

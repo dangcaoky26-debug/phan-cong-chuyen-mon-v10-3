@@ -1,0 +1,13 @@
+KIỂM TRA V10.3 PERFORMANCE
+- Python compile: PASS
+- JavaScript node --check: PASS
+- Tải 27 GV × 35 tuần so với V10.2: 0 sai khác
+- V10.2 teacher_loads_summary lần đầu: ~0,80-0,86s
+- V10.3 teacher_loads_summary lần đầu: ~0,12s; sau cache ~0,002s
+- V10.2 workload_notes: ~0,78-0,79s
+- V10.3 workload_notes sau cache: ~0,004-0,006s
+- V10.2 dashboard: ~3,08-3,10s
+- V10.3 dashboard lần đầu: ~0,11s; sau cache ~0,014s
+- V10.3 state-equivalent payload build: ~0,07-0,09s
+- Excel HKII: tuần tham chiếu T19, công thức không lỗi
+- Lịch sử: T1-17=2; T18-35=1

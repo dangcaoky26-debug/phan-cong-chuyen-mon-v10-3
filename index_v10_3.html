@@ -1,0 +1,2138 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phân công chuyên môn V10.3</title>
+<style>
+:root{
+  --nav:#17365d;--nav2:#214b7d;--bg:#f4f6f9;--card:#fff;--line:#dfe4ea;
+  --text:#17202a;--muted:#667085;--blue:#0f6cbd;--green:#107c41;
+  --yellow:#a15c00;--red:#b42318;--soft:#eef3f8;--purple:#7952b3
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,select,input{font:inherit}
+button{cursor:pointer;border:1px solid #cbd5e1;background:#fff;border-radius:7px;padding:8px 11px}
+button.primary{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600}
+button.success{background:var(--green);border-color:var(--green);color:#fff;font-weight:700}
+button.danger{color:var(--red)}
+.app{display:grid;grid-template-columns:215px 1fr;min-height:100vh}
+.sidebar{background:var(--nav);color:white;position:fixed;left:0;top:0;bottom:0;width:215px;padding:16px 11px;z-index:30}
+.brand{font-size:18px;font-weight:800;line-height:1.2;padding:0 8px 15px}.brand small{display:block;font-size:11px;font-weight:400;opacity:.7;margin-top:4px}
+.nav{display:grid;gap:4px}.nav button{border:0;background:transparent;color:#dce7f5;text-align:left;padding:10px 11px}.nav button:hover,.nav button.active{background:var(--nav2);color:white}
+.main{grid-column:2}
+.header{height:64px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 16px;position:sticky;top:0;z-index:20}
+.header h1{font-size:18px;margin:0}.spacer{flex:1}.header select,.header input{padding:7px;border:1px solid #cbd5e1;border-radius:6px}
+.content{padding:14px 16px 40px}.page{display:none}.page.active{display:block}
+.page-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:12px}.page-title h2{margin:0;font-size:22px}.page-title p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.card{background:white;border:1px solid var(--line);border-radius:10px;padding:13px}
+.grid{display:grid;gap:12px}.grid.cols2{grid-template-columns:1fr 1fr}
+.form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.span2{grid-column:span 2}.span4{grid-column:span 4}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}.field input,.field select{width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:6px;background:white}
+.actions{display:flex;gap:7px;margin-top:10px}
+table{width:100%;border-collapse:collapse;background:white}th,td{border-bottom:1px solid #e8ecf1;padding:8px 9px;text-align:left;font-size:13px;vertical-align:top}th{background:#eef3f8;position:sticky;top:64px}
+.table-wrap{border:1px solid var(--line);border-radius:9px;overflow:auto;max-height:580px;background:white}
+.badge{display:inline-block;padding:3px 7px;border-radius:999px;font-size:11px;background:#eef2f7}.badge.green{background:#e7f5eb;color:#126b39}.badge.red{background:#fdecec;color:#a32121}.badge.yellow{background:#fff3d8;color:#8a5500}.badge.blue{background:#eaf2ff;color:#2459a9}.badge.purple{background:#f0e9fb;color:#68429c}
+.small{font-size:12px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}.kpi{background:white;border:1px solid var(--line);border-radius:10px;padding:13px}.kpi .label{font-size:12px;color:var(--muted)}.kpi .value{font-size:25px;font-weight:800;margin-top:2px}
+
+/* ===== Drag-drop assignment ===== */
+.assign-shell{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:12px;align-items:start}
+.classes-area{min-width:0}.teachers-panel{position:sticky;top:76px;max-height:calc(100vh - 90px);overflow:auto}
+.assign-toolbar{display:flex;gap:8px;align-items:center;margin-bottom:10px;background:white;border:1px solid var(--line);border-radius:9px;padding:9px}.assign-toolbar select,.assign-toolbar input{padding:7px;border:1px solid #cbd5e1;border-radius:6px}
+.grade-tabs{display:flex;gap:6px}.grade-tab{padding:7px 11px}.grade-tab.active{background:#17365d;color:white;border-color:#17365d}
+.classes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.class-box{background:white;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.class-head{padding:10px 12px;background:#eef3f8;display:flex;align-items:center;gap:8px}.class-name{font-size:18px;font-weight:800}.class-program{font-size:12px;color:var(--muted)}
+.subjects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:9px}
+.subject-drop{border:2px dashed #d4dce6;background:#fbfcfd;border-radius:9px;padding:9px;min-height:103px;transition:.14s;position:relative}
+.subject-drop.assigned{border-style:solid;border-color:#a9c8ea;background:#f7fbff}
+.subject-drop.unassigned{background:#fffaf1;border-color:#e9c979}
+.subject-drop.split{border-color:#bda6da;background:#fbf8ff}
+.subject-drop.match{border-color:#0f6cbd;background:#e9f4ff;transform:translateY(-1px);box-shadow:0 0 0 2px #cce5ff inset}
+.subject-drop.blocked{opacity:.28;filter:grayscale(.55)}
+.subject-title{font-weight:800;font-size:14px}.subject-meta{font-size:11px;color:var(--muted);margin:3px 0 6px}
+.teacher-assigned{font-size:12px;font-weight:700;color:#17365d;white-space:normal}.teacher-assigned.empty{color:#9a6700}
+.subject-actions{position:absolute;right:6px;top:6px;display:flex;gap:4px}.mini-btn{border:0;background:#edf2f7;padding:2px 5px;font-size:10px;border-radius:5px}
+.part-wrap{display:grid;gap:5px;margin-top:6px}.part-drop{border:1px solid #d4dce6;border-radius:6px;padding:6px;background:white;min-height:55px}.part-drop.match{outline:2px solid #0f6cbd;background:#eef7ff}.part-drop.blocked{opacity:.3}.part-title{font-size:11px;font-weight:800}.part-teacher{font-size:11px;color:#17365d;margin-top:2px}
+.remove-x{float:right;border:0;background:transparent;color:#b42318;padding:0 2px;font-size:13px}
+.teacher-box{border-bottom:1px solid #e7ebf0;padding:10px 3px}.teacher-top{display:flex;justify-content:space-between;gap:8px}.teacher-name{font-weight:800}.teacher-meta{font-size:11px;color:var(--muted)}.load{font-weight:800}.load.over{color:var(--red)}.load.ok{color:var(--green)}
+.teacher-subjects{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}.teacher-subject-card{padding:6px 8px;border-radius:7px;background:#eaf2ff;color:#184f88;border:1px solid #b9d2ed;font-size:12px;font-weight:800;cursor:grab;user-select:none}.teacher-subject-card:active{cursor:grabbing}.teacher-subject-card.dragging-source{opacity:.45}
+.teacher-search{width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:6px;margin-bottom:8px}
+.teacher-filter{width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:6px;margin-bottom:8px}
+.drag-hint{font-size:11px;color:var(--muted);padding:7px;background:#f6f8fb;border-radius:7px;margin-bottom:8px}
+.toast{position:fixed;bottom:18px;right:18px;background:#17365d;color:white;padding:10px 14px;border-radius:7px;z-index:60;display:none;box-shadow:0 5px 20px #0003}
+.modal-back{position:fixed;inset:0;background:#0006;z-index:70;display:none;align-items:center;justify-content:center}.modal-back.show{display:flex}.modal{width:min(520px,92vw);background:white;border-radius:11px;padding:16px;box-shadow:0 15px 50px #0004}.modal h3{margin:0 0 8px}.modal .summary{background:#f5f7fa;border-radius:8px;padding:10px;margin:9px 0}.modal .buttons{display:flex;gap:7px;justify-content:flex-end;margin-top:12px}
+.source-line{font-size:11px;color:var(--muted);margin-top:2px}
+
+
+/* ===== Tổ hợp & lớp học V7.4 ===== */
+.template-editor{display:grid;grid-template-columns:320px 1fr;gap:12px;align-items:start}
+.template-subject-table{display:grid;grid-template-columns:1.5fr 100px 110px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.template-subject-table>div{padding:8px;border-bottom:1px solid #edf0f3;background:#fff}
+.template-subject-table>div.head{background:#eef3f8;font-weight:700}
+.template-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.template-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
+.template-card h3{margin:0 0 4px;font-size:16px}
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.pill{padding:5px 8px;border-radius:999px;background:#eef3f8;font-size:11px;border:1px solid #dce4ed}
+.pill.cd{background:#f2ebfb;color:#6a439c;border-color:#d6c5ee}
+.class-create{display:grid;grid-template-columns:150px 110px 260px 1fr auto;gap:9px;align-items:end}
+.class-preview{margin-top:10px;padding:10px;border:1px dashed #b9c7d8;background:#f8fbff;border-radius:8px}
+.class-manage-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.manage-class-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
+.manage-class-head{display:flex;gap:9px;align-items:flex-start}.manage-class-head .big{font-size:19px;font-weight:800}.manage-class-head .meta{font-size:12px;color:var(--muted)}
+.manage-class-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.structure-grid{display:grid;grid-template-columns:1.5fr 100px 110px;border:1px solid var(--line);border-radius:8px;overflow:hidden;max-height:460px;overflow-y:auto}
+.structure-grid>div{padding:8px;border-bottom:1px solid #edf0f3}.structure-grid>div.head{background:#eef3f8;font-weight:700;position:sticky;top:0;z-index:2}
+
+
+/* ===== Ôn tốt nghiệp V7.5 ===== */
+.review-form-grid{display:grid;grid-template-columns:1.4fr 1fr .8fr .9fr .9fr;gap:9px;align-items:end}
+.review-classes{display:flex;flex-wrap:wrap;gap:7px;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fafbfd;min-height:48px}
+.review-class-chip{display:flex;align-items:center;gap:5px;padding:6px 9px;border:1px solid #ced8e3;border-radius:999px;background:#fff;font-size:12px;cursor:pointer}
+.review-class-chip.checked{background:#eaf3ff;border-color:#83b4e8;color:#174d82;font-weight:700}
+.review-preview{margin-top:10px;padding:10px;border-radius:8px;border:1px solid #d7e2ef;background:#f7fbff}
+.review-preview .big{font-size:18px;font-weight:800}
+.review-table th{position:static!important}
+
+
+/* ===== Đội ngũ V8.0 ===== */
+.staff-form-details{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.staff-form-details summary{cursor:pointer;padding:11px 13px;font-weight:800;background:#f8fafc;list-style:none}
+.staff-form-details summary::-webkit-details-marker{display:none}
+.staff-form-details[open] summary{border-bottom:1px solid var(--line)}
+.staff-form-inner{padding:13px}
+.staff-toolbar{display:flex;gap:8px;align-items:center;margin-bottom:9px}
+.staff-toolbar input,.staff-toolbar select{padding:7px 8px;border:1px solid #cbd5e1;border-radius:6px}
+.staff-table-wrap{border:1px solid var(--line);border-radius:9px;overflow:auto;max-height:650px;background:#fff}
+.staff-table-wrap th{position:static!important}
+.staff-table-wrap td{white-space:nowrap}
+.staff-table-wrap td.classes-cell,.staff-table-wrap td.change-cell,.staff-table-wrap td.credit-cell{white-space:normal;min-width:210px}
+.staff-table-wrap td.classes-cell{min-width:300px}
+.staff-table-wrap td.change-cell{min-width:190px}
+.staff-table-wrap td.credit-cell{min-width:180px}
+.staff-name{min-width:190px}
+.mini-line{font-size:11px;color:var(--muted);line-height:1.35}
+.change-short{font-size:11px;line-height:1.35}
+.max-load{font-weight:800}
+.max-load.over{color:var(--red)}
+.max-load.ok{color:var(--green)}
+
+
+/* ===== Chương trình & phân bổ thực dạy V8.0 ===== */
+.program-source-card{display:flex;gap:12px;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.program-source-title{font-weight:800;font-size:16px}
+.program-source-meta{font-size:12px;color:var(--muted);margin-top:3px}
+.program-table-wrap{border:1px solid var(--line);border-radius:9px;overflow:auto;background:#fff;max-height:620px}
+.program-table-wrap th{position:static!important}
+.schedule-summary{font-size:12px;line-height:1.4;min-width:180px;white-space:normal}
+.program-actions{display:flex;gap:5px;flex-wrap:wrap}
+.segment-section{border:1px solid var(--line);border-radius:8px;padding:10px;margin-top:10px}
+.segment-section h4{margin:0 0 8px;font-size:14px}
+.segment-head,.segment-row{display:grid;grid-template-columns:90px 90px 110px 60px;gap:7px;align-items:center}
+.segment-head{font-size:11px;color:var(--muted);font-weight:700;margin-bottom:5px}
+.segment-row{margin-bottom:6px}
+.segment-row input{width:100%;padding:7px;border:1px solid #cbd5e1;border-radius:6px}
+.segment-total{font-size:12px;margin-top:7px}
+.segment-total.ok{color:var(--green);font-weight:700}
+.segment-total.bad{color:var(--red);font-weight:700}
+.program-lock-note{padding:8px 10px;border-radius:7px;background:#fff7e6;border:1px solid #f3d494;font-size:12px;color:#7a5200;margin-bottom:10px}
+
+
+/* ===== CN/KN theo giai đoạn V8.0 ===== */
+.duty-history{margin-top:12px;border:1px solid var(--line);border-radius:8px;overflow:auto;max-height:300px}
+.duty-history table th{position:static!important}
+.duty-current{display:flex;flex-wrap:wrap;gap:5px}
+.duty-chip{padding:4px 7px;border-radius:999px;font-size:11px;background:#eef3f8;border:1px solid #d7e0ea}
+.duty-chip.cn{background:#eaf5ee;color:#17643a;border-color:#cce6d5}
+.duty-chip.kn{background:#f3edfb;color:#67469a;border-color:#dcccf0}
+
+
+/* ===== Dashboard V8.1 ===== */
+.dashboard-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.dash-kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px}
+.dash-kpi .klabel{font-size:11px;color:var(--muted)}
+.dash-kpi .kvalue{font-size:25px;font-weight:800;margin-top:3px}
+.dashboard-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:12px}
+.chart-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}
+.chart-card.wide{grid-column:1/-1}
+.chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.chart-head h3{font-size:15px;margin:0}
+.chart-head .desc{font-size:11px;color:var(--muted);margin-top:2px}
+.chart-box{width:100%;overflow:auto}
+.chart-box svg{display:block;width:100%;height:auto;min-width:480px}
+.chart-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:6px}
+.legend-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
+.dashboard-select{padding:7px;border:1px solid #cbd5e1;border-radius:6px;min-width:220px;background:#fff}
+.chart-note{font-size:11px;color:var(--muted);margin-top:6px}
+@media(max-width:1100px){
+  .dashboard-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .dashboard-grid{grid-template-columns:1fr}
+  .chart-card.wide{grid-column:auto}
+}
+
+
+/* ===== V9.0 Planning / validation / tools ===== */
+.scenario-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.scenario-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
+.scenario-card.active{border-color:#0f6cbd;box-shadow:0 0 0 2px #d9ecff inset}
+.metric-row{display:grid;grid-template-columns:1fr auto;gap:8px;font-size:12px;padding:4px 0;border-bottom:1px dashed #edf0f3}
+.validation-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+.issue-card{background:#fff;border:1px solid var(--line);border-left-width:5px;border-radius:9px;padding:10px;margin-bottom:7px}
+.issue-card.error{border-left-color:#b42318}.issue-card.warning{border-left-color:#d97706}.issue-card.info{border-left-color:#3b82f6}
+.issue-title{font-weight:800}.issue-detail{font-size:12px;color:#475569;margin-top:3px}
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.drop-zone{border:2px dashed #cbd5e1;border-radius:10px;padding:18px;text-align:center;background:#fafbfd}
+.import-preview{margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff;max-height:300px;overflow:auto}
+.history-table th{position:static!important}
+.recommend-list{display:grid;gap:7px}
+.recommend-row{display:grid;grid-template-columns:1.4fr .8fr .8fr .8fr auto;gap:8px;align-items:center;border:1px solid var(--line);padding:8px;border-radius:8px}
+.locked-card{box-shadow:0 0 0 2px #f59e0b inset!important;opacity:.8}
+.class-lock-btn{margin-left:auto}
+.heatmap-wrap{overflow:auto}
+.heatmap-grid{display:grid;gap:2px;align-items:center;min-width:1050px}
+.heatmap-cell{height:16px;border-radius:2px}
+.heatmap-label{font-size:10px;text-align:right;padding-right:4px;white-space:nowrap}
+@media(max-width:1100px){
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:1fr}
+  .validation-kpis{grid-template-columns:repeat(2,1fr)}
+}
+
+
+/* ===== V10.3 Học kỳ chính xác + lớp đang dạy ===== */
+.workflow-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px;border:1px solid var(--line);border-radius:9px;background:#fff;margin-bottom:10px}
+.workflow-status{font-weight:800;padding:5px 9px;border-radius:999px;background:#eef2ff}
+.optimizer-result{font-size:12px;margin-top:8px}
+.tkb-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.event-row{display:grid;grid-template-columns:1.2fr 1fr .55fr .55fr .7fr 1fr auto;gap:7px;align-items:center}
+.assistant-box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+.assistant-answer{margin-top:10px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;min-height:60px;white-space:pre-wrap}
+.impact-block{margin-top:8px;padding:8px;border-radius:7px;background:#f8fafc;border:1px solid #e2e8f0}
+.report-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.status-approved{background:#dcfce7;color:#166534}.status-reviewed{background:#dbeafe;color:#1d4ed8}.status-draft{background:#f1f5f9;color:#475569}
+@media(max-width:1100px){.tkb-grid{grid-template-columns:1fr}.event-row{grid-template-columns:1fr 1fr}}
+
+
+.teacher-classes-now{margin-top:4px;line-height:1.35;white-space:normal;max-width:220px;color:#475569}
+@media(max-width:1250px){.classes-grid{grid-template-columns:1fr}.subjects-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.assign-shell{grid-template-columns:minmax(0,1fr) 300px}}
+@media(max-width:980px){.app{grid-template-columns:1fr}.sidebar{display:none}.main{grid-column:1}.assign-shell{grid-template-columns:1fr}.teachers-panel{position:static;max-height:none}.subjects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">PHÂN CÔNG<br>CHUYÊN MÔN<small>V10.3 Performance — tối ưu tốc độ</small></div>
+    <div class="nav">
+      <button data-page="dashboard" class="active" onclick="showPage('dashboard')">1. Thống kê & đồ thị</button>
+      <button data-page="assign" onclick="showPage('assign')">2. Phân công kéo-thả</button>
+      <button data-page="scenarios" onclick="showPage('scenarios')">3. Phương án & tối ưu</button>
+      <button data-page="validation" onclick="showPage('validation')">4. Kiểm tra hệ thống</button>
+      <button data-page="timetable" onclick="showPage('timetable')">5. Thời khóa biểu</button>
+      <button data-page="events" onclick="showPage('events')">6. Biến động nhân sự</button>
+      <button data-page="staff" onclick="showPage('staff')">7. Đội ngũ & chuyên môn</button>
+      <button data-page="templates" onclick="showPage('templates')">8. Tổ hợp chương trình</button>
+      <button data-page="classes" onclick="showPage('classes')">9. Lớp học</button>
+      <button data-page="program" onclick="showPage('program')">10. Chương trình & số tiết</button>
+      <button data-page="staffing" onclick="showPage('staffing')">11. Định mức nhân sự</button>
+      <button data-page="review" onclick="showPage('review')">12. Ôn tốt nghiệp</button>
+      <button data-page="assistant" onclick="showPage('assistant')">13. Trợ lý & báo cáo</button>
+      <button data-page="year" onclick="showPage('year')">14. Năm học</button>
+      <button data-page="tools" onclick="showPage('tools')">15. Nhập liệu & sao lưu</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="header">
+      <h1 id="headerTitle">Thống kê & đồ thị</h1>
+      <div class="spacer"></div>
+      <span class="small">Năm học</span>
+      <select id="yearSelect" onchange="changeYear()"></select>
+      <span class="small">Tuần xem tải</span>
+      <input id="weekInput" type="number" min="1" max="35" value="1" style="width:66px" onchange="reload()">
+      <span class="small">Phạm vi xuất</span>
+      <select id="exportScope" onchange="toggleExportRange()" style="width:118px">
+        <option value="all">Cả năm</option><option value="hk1">Học kỳ I</option><option value="hk2">Học kỳ II</option><option value="custom">Khoảng tuần</option>
+      </select>
+      <input id="exportStart" type="number" min="1" max="35" value="1" title="Từ tuần" style="width:58px;display:none">
+      <input id="exportEnd" type="number" min="1" max="35" value="35" title="Đến tuần" style="width:58px;display:none">
+      <button class="success" onclick="exportExcel()">⬇ Xuất bảng tính V10.3</button>
+      <button class="danger" onclick="shutdownApp()">⏻ Thoát</button>
+    </div>
+
+    <div class="content">
+
+
+      <!-- DASHBOARD -->
+      <section id="page-dashboard" class="page active">
+        <div class="page-title">
+          <div>
+            <h2>Thống kê & đồ thị</h2>
+            <p>Tổng hợp tải giáo viên, mức hoàn thành phân công, nhu cầu nhân sự và biến động tải theo 35 tuần.</p>
+          </div>
+        </div>
+
+        <div class="dashboard-kpis">
+          <div class="dash-kpi"><div class="klabel">Giáo viên hoạt động</div><div class="kvalue" id="dkTeachers">—</div></div>
+          <div class="dash-kpi"><div class="klabel">Lớp hoạt động</div><div class="kvalue" id="dkClasses">—</div></div>
+          <div class="dash-kpi"><div class="klabel">Hoàn thành phân công</div><div class="kvalue" id="dkAssigned">—</div></div>
+          <div class="dash-kpi"><div class="klabel">GV vượt chuẩn tuần này</div><div class="kvalue" id="dkOver">—</div></div>
+          <div class="dash-kpi"><div class="klabel">Nhu cầu chưa gán</div><div class="kvalue" id="dkUnassigned">—</div></div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="chart-card wide">
+            <div class="chart-head">
+              <div><h3>Tải giáo viên ở tuần đang xem</h3><div class="desc">So sánh tổng tiết với chuẩn đang áp dụng của từng giáo viên.</div></div>
+              <span class="badge blue" id="dashWeekBadge">Tuần 1</span>
+            </div>
+            <div id="chartTeacherLoad" class="chart-box"></div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-head"><div><h3>Trạng thái tải giáo viên</h3><div class="desc">Thiếu chuẩn · đủ chuẩn · vượt chuẩn.</div></div></div>
+            <div id="chartLoadStatus" class="chart-box"></div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-head"><div><h3>Hoàn thành phân công theo khối</h3><div class="desc">Tỷ lệ nhu cầu môn/chuyên đề đã có giáo viên.</div></div></div>
+            <div id="chartGradeCompletion" class="chart-box"></div>
+          </div>
+
+          <div class="chart-card wide">
+            <div class="chart-head">
+              <div><h3>Nhu cầu nhân sự theo môn</h3><div class="desc">GV quy đổi theo chuẩn 17 so với số giáo viên có thể dạy.</div></div>
+            </div>
+            <div id="chartStaffing" class="chart-box"></div>
+          </div>
+
+          <div class="chart-card wide">
+            <div class="chart-head"><div><h3>Heatmap tải giáo viên × 35 tuần</h3><div class="desc">Đỏ = vượt chuẩn, vàng = thiếu, xanh = đủ/ gần chuẩn.</div></div></div>
+            <div id="chartHeatmap" class="heatmap-wrap"></div>
+          </div>
+
+          <div class="chart-card wide">
+            <div class="chart-head"><div><h3>Dư / thiếu năng lực theo môn</h3><div class="desc">Số GV có thể dạy trừ nhu cầu quy đổi theo chuẩn 17.</div></div></div>
+            <div id="chartSubjectGap" class="chart-box"></div>
+          </div>
+
+          <div class="chart-card wide">
+            <div class="chart-head">
+              <div><h3>Diễn biến tải giáo viên trong 35 tuần</h3><div class="desc">Đường Tổng tiết và Chuẩn thay đổi theo phân bổ môn, ôn TN và CN/KN/chức vụ.</div></div>
+              <select id="dashTeacherSelect" class="dashboard-select" onchange="renderTeacherTrend()"></select>
+            </div>
+            <div id="chartTeacherTrend" class="chart-box"></div>
+            <div class="chart-note">Biểu đồ này giúp nhìn ngay thời điểm một giáo viên bắt đầu vượt hoặc thiếu chuẩn.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ASSIGN -->
+      <section id="page-assign" class="page">
+        <div class="page-title">
+          <div>
+            <h2>Phân công bằng thẻ môn</h2>
+            <p>Kéo thẻ chuyên môn của giáo viên ở bên phải vào đúng thẻ môn của lớp. Nếu vượt chuẩn, phần mềm sẽ cảnh báo trước khi gán.</p>
+          </div>
+        </div>
+
+        <div class="assign-shell">
+          <div class="classes-area">
+            <div class="assign-toolbar">
+              <div class="grade-tabs">
+                <button class="grade-tab active" data-grade="10" onclick="setGrade('10')">Khối 10</button>
+                <button class="grade-tab" data-grade="11" onclick="setGrade('11')">Khối 11</button>
+                <button class="grade-tab" data-grade="12" onclick="setGrade('12')">Khối 12</button>
+                <button class="grade-tab" data-grade="" onclick="setGrade('')">Tất cả</button>
+              </div>
+              <div class="spacer"></div>
+              <span class="small" id="assignStats"></span>
+            </div>
+            <div id="classesGrid" class="classes-grid"></div>
+          </div>
+
+          <aside class="card teachers-panel">
+            <h3 style="margin:0 0 8px">Đội ngũ</h3>
+            <div class="drag-hint">Kéo đúng <b>thẻ môn</b> của giáo viên vào môn tương ứng của lớp. Khi kéo, các ô phù hợp sẽ sáng lên.</div>
+            <input id="teacherSearch" class="teacher-search" placeholder="Tìm giáo viên..." oninput="renderTeachers()">
+            <select id="teacherSubjectFilter" class="teacher-filter" onchange="renderTeachers()"><option value="">Tất cả chuyên môn</option></select>
+            <div id="teachersList"></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- SCENARIOS -->
+      <section id="page-scenarios" class="page">
+        <div class="page-title">
+          <div><h2>Phương án thử, tối ưu & phê duyệt</h2><p>Tạo phương án thủ công hoặc để hệ thống sinh 3 phương án tự động: cân bằng tải, ít vượt giờ, ít thay đổi.</p></div>
+          <button class="success" onclick="generateOptimized()">⚙ Sinh 3 phương án tối ưu</button>
+        </div>
+        <div class="workflow-bar">
+          <b>Quy trình:</b> <span id="workflowStatus" class="workflow-status">—</span>
+          <input id="workflowActor" placeholder="Người thực hiện/duyệt" style="min-width:180px">
+          <input id="workflowNote" placeholder="Ghi chú phê duyệt" style="min-width:220px">
+          <button onclick="setWorkflow('DRAFT')">Mở soạn thảo</button>
+          <button onclick="setWorkflow('REVIEWED')">Tổ trưởng đã kiểm tra</button>
+          <button class="success" onclick="setWorkflow('APPROVED')">BGĐ duyệt & khóa</button>
+        </div>
+        <div id="optimizerMessage" class="optimizer-result"></div>
+        <div class="card">
+          <div class="form-grid">
+            <div class="field span2"><label>Tên phương án mới</label><input id="scenarioName" placeholder="Ví dụ: Phương án giảm tải cô Tâm"></div>
+            <div class="field span2"><label>Mô tả</label><input id="scenarioDesc"></div>
+          </div>
+          <div class="actions">
+            <button class="primary" onclick="createScenario()">+ Tạo phương án từ trạng thái hiện tại</button>
+            <button onclick="loadScenarios()">Làm mới</button>
+          </div>
+        </div>
+        <div id="scenarioGrid" class="scenario-grid" style="margin-top:12px"></div>
+
+        <div class="card" style="margin-top:12px">
+          <div class="page-title" style="margin:0 0 8px"><div><h2 style="font-size:17px">Lịch sử thao tác</h2><p>Có thể hoàn tác thao tác gần nhất trong năm học hiện tại.</p></div>
+          <button class="danger" onclick="undoLast()">↶ Hoàn tác gần nhất</button></div>
+          <div class="table-wrap history-table"><table><thead><tr><th>Thời gian</th><th>Người thao tác</th><th>Thao tác</th><th>Trạng thái</th></tr></thead><tbody id="historyBody"></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- VALIDATION -->
+      <section id="page-validation" class="page">
+        <div class="page-title">
+          <div><h2>Trung tâm kiểm tra hệ thống</h2><p>Quét toàn bộ phân công để phát hiện thiếu GV, sai chuyên môn, vượt chuẩn, trùng CN/KN, sai ôn TN và sai phân bổ tiết.</p></div>
+          <button class="primary" onclick="runValidation()">Kiểm tra toàn bộ</button>
+        </div>
+        <div class="validation-kpis">
+          <div class="kpi"><div class="label">Tổng vấn đề</div><div class="value" id="vkTotal">—</div></div>
+          <div class="kpi"><div class="label">Lỗi</div><div class="value" id="vkError">—</div></div>
+          <div class="kpi"><div class="label">Cảnh báo</div><div class="value" id="vkWarning">—</div></div>
+          <div class="kpi"><div class="label">Thông tin</div><div class="value" id="vkInfo">—</div></div>
+        </div>
+        <div class="actions" style="margin-bottom:8px">
+          <select id="validationFilter" onchange="renderValidationIssues()">
+            <option value="">Tất cả</option><option value="error">Chỉ lỗi</option><option value="warning">Chỉ cảnh báo</option><option value="info">Chỉ thông tin</option>
+          </select>
+        </div>
+        <div id="validationIssues"></div>
+      </section>
+
+
+      <!-- TIMETABLE -->
+      <section id="page-timetable" class="page">
+        <div class="page-title"><div><h2>Thời khóa biểu & đối chiếu phân công</h2><p>Upload trực tiếp PDF TKB theo giáo viên như mẫu AD hoặc dùng Excel dạng bảng phẳng. Hệ thống tự tách Giáo viên - Buổi - Tiết - Thứ - Lớp - Môn.</p></div>
+          <div class="actions">
+            <button onclick="window.location='/template_tkb.xlsx'">⬇ Mẫu Excel phẳng</button>
+            <button onclick="previewTkbSync()">Đối chiếu với phân công</button>
+            <button class="primary" onclick="validateTimetable()">Kiểm tra TKB</button>
+          </div></div>
+        <div class="tkb-grid">
+          <div class="card">
+            <h3>Nhập TKB từ PDF mẫu giáo viên / Excel</h3>
+            <input id="tkbFile" type="file" accept=".pdf,.xlsx">
+            <div class="small" style="margin-top:6px">PDF hỗ trợ trực tiếp mẫu có cột <b>Giáo Viên | Buổi | Tiết | Thứ 2...Thứ 7</b>, mỗi ô dạng <b>12A-Toán</b>. Không cần chuyển PDF thành Excel.</div>
+            <div class="form-grid" style="margin-top:8px">
+              <div class="field"><label>Từ tuần áp dụng</label><input id="tkbImportStart" type="number" min="1" max="35" value="1"></div>
+              <div class="field"><label>Đến tuần</label><input id="tkbImportEnd" type="number" min="1" max="35" value="35"></div>
+              <div class="field span2"><label>Cách nhập</label><select id="tkbReplaceMode"><option value="range">Thay TKB trong khoảng tuần này</option><option value="append">Chỉ bổ sung, không xóa</option><option value="all">Xóa toàn bộ TKB năm rồi nhập</option></select></div>
+            </div>
+            <div class="actions"><button onclick="previewTimetable()">Xem trước</button><button class="primary" onclick="applyTimetable()">Nhập TKB</button></div>
+            <div id="tkbPreview" class="import-preview">Chưa có dữ liệu xem trước.</div>
+          </div>
+          <div class="card">
+            <h3>Thêm dòng TKB</h3>
+            <div class="form-grid">
+              <div class="field"><label>Lớp</label><select id="tkbClass"></select></div>
+              <div class="field span2"><label>Giáo viên</label><select id="tkbTeacher"></select></div>
+              <div class="field"><label>Môn</label><select id="tkbSubject"></select></div>
+              <div class="field"><label>Buổi</label><select id="tkbSession"><option>Sáng</option><option>Chiều</option></select></div>
+              <div class="field"><label>Thứ</label><select id="tkbDay"><option>Thứ 2</option><option>Thứ 3</option><option>Thứ 4</option><option>Thứ 5</option><option>Thứ 6</option><option>Thứ 7</option></select></div>
+              <div class="field"><label>Tiết</label><input id="tkbPeriod" type="number" min="1" value="1"></div>
+              <div class="field"><label>Từ tuần</label><input id="tkbStart" type="number" min="1" max="35" value="1"></div>
+              <div class="field"><label>Đến tuần</label><input id="tkbEnd" type="number" min="1" max="35" value="35"></div>
+            </div>
+            <div class="actions"><button class="primary" onclick="saveTkbEntry()">Thêm dòng</button></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <div class="page-title" style="margin:0 0 6px">
+            <div><h3 style="margin:0">Đối chiếu TKB ↔ phân công chuyên môn</h3><div class="small">Phân công chuyên môn được xem là nguồn chính. Chỉ đồng bộ các lớp/môn có đúng một giáo viên được phân công.</div></div>
+            <button class="success" onclick="applyTkbSync()">Đồng bộ TKB theo phân công</button>
+          </div>
+          <div id="tkbSyncPreview" class="small">Bấm “Đối chiếu với phân công” để xem trước.</div>
+        </div>
+        <div class="card" style="margin-top:12px"><h3>Kết quả kiểm tra</h3><div id="tkbValidation" class="small">Chưa kiểm tra.</div></div>
+        <div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>Lớp</th><th>GV</th><th>Môn</th><th>Buổi</th><th>Thứ</th><th>Tiết</th><th>Tuần</th><th>Nguồn</th><th></th></tr></thead><tbody id="tkbBody"></tbody></table></div>
+      </section>
+
+      <!-- EVENTS -->
+      <section id="page-events" class="page">
+        <div class="page-title"><div><h2>Biến động nhân sự trong năm</h2><p>Ghi nghỉ thai sản, nghỉ dài hạn, chuyển công tác, giáo viên mới, dạy thay... theo khoảng tuần.</p></div></div>
+        <div class="card">
+          <input id="evId" type="hidden">
+          <div class="form-grid">
+            <div class="field span2"><label>Giáo viên</label><select id="evTeacher"></select></div>
+            <div class="field"><label>Loại biến động</label><select id="evType"><option>Nghỉ thai sản</option><option>Nghỉ dài hạn</option><option>Chuyển công tác</option><option>Giáo viên mới</option><option>Dạy thay</option><option>Khác</option></select></div>
+            <div class="field"><label>Chặn khả năng dạy</label><select id="evBlock"><option value="1">Có</option><option value="0">Không</option></select></div>
+            <div class="field"><label>Từ tuần</label><input id="evStart" type="number" min="1" max="35" value="1"></div>
+            <div class="field"><label>Đến tuần</label><input id="evEnd" type="number" min="1" max="35" value="35"></div>
+            <div class="field span2"><label>Giáo viên thay thế</label><select id="evReplacement"></select></div>
+            <div class="field span2"><label>Ghi chú</label><input id="evNote"></div>
+          </div>
+          <div class="actions"><button class="primary" onclick="saveStaffEvent()">Lưu biến động</button><button onclick="clearStaffEvent()">Làm trống</button></div>
+        </div>
+        <div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>GV</th><th>Biến động</th><th>Tuần</th><th>Chặn dạy</th><th>GV thay</th><th>Ghi chú</th><th></th></tr></thead><tbody id="eventBody"></tbody></table></div>
+        <div id="eventSuggestions" class="card" style="margin-top:12px;display:none"></div>
+      </section>
+
+      <!-- ASSISTANT -->
+      <section id="page-assistant" class="page">
+        <div class="page-title"><div><h2>Trợ lý phân tích & báo cáo</h2><p>Hỏi nhanh dữ liệu phân công bằng câu tự nhiên, xuất Word hoặc mở bản in để lưu PDF.</p></div></div>
+        <div class="assistant-box">
+          <div class="field"><label>Câu hỏi</label><input id="assistantInput" placeholder="Ví dụ: Ai dư trên 5 tiết? / Thầy Dũng bao nhiêu tiết? / Kiểm tra lỗi hiện tại"></div>
+          <div class="actions"><button class="primary" onclick="askAssistant()">Hỏi trợ lý</button></div>
+          <div id="assistantAnswer" class="assistant-answer">Sẵn sàng.</div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <h3>Báo cáo chính thức</h3>
+          <div class="report-buttons">
+            <button class="success" onclick="downloadReportWord()">⬇ Báo cáo Word</button>
+            <button onclick="openPrintReport()">🖨 Bản in / Lưu PDF</button>
+            <button onclick="exportExcel()">⬇ Excel đầy đủ</button>
+          </div>
+          <p class="small">Báo cáo lấy đúng phương án đang mở và trạng thái phê duyệt hiện tại.</p>
+        </div>
+      </section>
+
+      <!-- STAFF -->
+      <section id="page-staff" class="page">
+        <div class="page-title">
+          <div>
+            <h2>Đội ngũ & chuyên môn</h2>
+            <p>Bảng kiểm soát tải giáo viên: lớp đang dạy, chuẩn, tổng tiết tuần đang xem, dư/thiếu, cao nhất năm và biến động theo tuần.</p>
+          </div>
+        </div>
+
+        <details id="staffFormDetails" class="staff-form-details">
+          <summary>＋ Thêm / sửa giáo viên</summary>
+          <div class="staff-form-inner">
+            <input id="tId" type="hidden">
+            <div class="form-grid">
+              <div class="field"><label>STT</label><input id="tStt" type="number"></div>
+              <div class="field span2"><label>Họ tên</label><input id="tName"></div>
+              <div class="field"><label>Loại GV</label><select id="tType"><option>Cơ hữu</option><option>Hợp đồng</option><option>Thỉnh giảng</option></select></div>
+              <div class="field"><label>Chuyên môn chính</label><select id="tPrimary"></select></div>
+              <div class="field span2"><label>Có thể dạy (phân cách dấu phẩy)</label><input id="tCan"></div>
+              <div class="field"><label>Chuẩn tiết/tuần</label><input id="tStandard" value="17"></div>
+              <div class="field"><label>Hiệu lực từ tuần</label><input id="tStart" type="number" min="1" max="35" value="1"></div>
+              <div class="field"><label>Đến tuần</label><input id="tEnd" type="number" min="1" max="35" value="35"></div>
+              <div class="field span2"><label>CN/KN</label><div class="small" style="padding:9px;border:1px solid #d8e0e8;border-radius:6px;background:#f8fafc">Chủ nhiệm và kiêm nhiệm được quản lý theo từng giai đoạn tuần bằng nút <b>CN/KN</b> ở bảng phía dưới.</div></div>
+              <div class="field span4"><label>Ghi chú</label><input id="tNote"></div>
+            </div>
+            <div class="actions"><button class="primary" onclick="saveTeacher()">Lưu giáo viên</button><button onclick="clearTeacher()">Làm trống</button></div>
+          </div>
+        </details>
+
+        <div class="staff-toolbar">
+          <input id="staffSearch" placeholder="Tìm giáo viên / lớp..." oninput="renderStaff()" style="min-width:240px">
+          <select id="staffSubjectFilter" onchange="renderStaff()"><option value="">Tất cả chuyên môn</option></select>
+          <div class="spacer"></div>
+          <span class="small">Tổng tiết & dư/thiếu đang tính ở <b>tuần <span id="staffWeekLabel">1</span></b></span>
+        </div>
+
+        <div class="staff-table-wrap">
+          <table>
+            <thead><tr>
+              <th>Giáo viên</th>
+              <th>Chuyên môn</th>
+              <th>Có thể dạy</th>
+              <th>Các lớp đang dạy</th>
+              <th>Chuẩn</th>
+              <th>Tổng</th>
+              <th>Dư/thiếu</th>
+              <th>Cao nhất năm</th>
+              <th>Quy đổi CN/KN</th>
+              <th>Biến động</th>
+              <th>Loại</th>
+              <th>Hiệu lực</th>
+              <th>Trạng thái</th>
+              <th></th>
+            </tr></thead>
+            <tbody id="staffBody"></tbody>
+          </table>
+        </div>
+      </section>
+      <!-- TEMPLATES -->
+      <section id="page-templates" class="page">
+        <div class="page-title"><div><h2>Tổ hợp chương trình</h2><p>Tổ hợp là mẫu động theo từng năm học. Chỉnh một tổ hợp có thể cập nhật toàn bộ các lớp đang dùng tổ hợp đó.</p></div></div>
+        <div class="template-editor">
+          <div class="card">
+            <h3 id="tpFormTitle" style="margin-top:0">Thêm tổ hợp</h3>
+            <input id="tpId" type="hidden">
+            <div class="field"><label>Tên tổ hợp</label><input id="tpName" placeholder="Ví dụ: Tổ hợp 3"></div>
+            <div class="field"><label>Khối</label><select id="tpGrade"><option>10</option><option>11</option><option>12</option></select></div>
+            <div class="field"><label>Ghi chú</label><input id="tpNote"></div>
+            <div class="actions"><label><input id="tpUpdateClasses" type="checkbox"> Cập nhật ngay các lớp đang dùng tổ hợp này</label></div>
+            <div class="actions"><button class="primary" onclick="saveTemplate()">Lưu tổ hợp</button><button onclick="clearTemplate()">Làm trống</button></div>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">Chọn môn trong tổ hợp</h3>
+            <div class="small" style="margin-bottom:8px">Cốt lõi = môn học của lớp. CĐ = lớp có thêm chuyên đề của môn đó.</div>
+            <div id="templateSubjectEditor" class="template-subject-table"></div>
+          </div>
+        </div>
+        <div class="template-list" id="templateList" style="margin-top:12px"></div>
+      </section>
+
+      <!-- CLASSES -->
+      <section id="page-classes" class="page">
+        <div class="page-title"><div><h2>Lớp học</h2><p>Tạo lớp bằng cách chọn khối + tổ hợp. Phần mềm tự sinh toàn bộ thẻ môn; không cần thêm từng môn thủ công.</p></div></div>
+        <div class="card">
+          <input id="cId" type="hidden">
+          <div class="class-create">
+            <div class="field"><label>Tên lớp</label><input id="cName" placeholder="10F"></div>
+            <div class="field"><label>Khối</label><select id="cGrade" onchange="refreshClassTemplateOptions()"><option>10</option><option>11</option><option>12</option></select></div>
+            <div class="field"><label>Tổ hợp</label><select id="cTemplate" onchange="previewClassTemplate()"></select></div>
+            <div class="field"><label>GVCN</label><select id="cHomeroom"></select></div>
+            <div class="actions" style="margin:0"><button class="primary" onclick="saveClass()">Lưu lớp</button><button onclick="clearClass()">Làm trống</button></div>
+          </div>
+          <div class="class-preview" id="classTemplatePreview">Chọn tổ hợp để xem trước cấu trúc môn.</div>
+        </div>
+        <div class="class-manage-grid" id="classManageGrid"></div>
+      </section>
+      <!-- PROGRAM -->
+      <section id="page-program" class="page">
+        <div class="page-title">
+          <div>
+            <h2>Chương trình & số tiết</h2>
+            <p>Tách riêng khung pháp lý và phân bổ thực dạy. Tải giáo viên được tính theo số tiết thực tế của từng tuần, không dùng bình quân 52/35.</p>
+          </div>
+        </div>
+
+        <div class="program-source-card">
+          <div>
+            <div class="program-source-title" id="programSourceTitle">Chương trình GDTX cấp THPT</div>
+            <div class="program-source-meta">
+              Nguồn: <b id="programSourceText"></b> ·
+              <span id="programWeeksText"></span>
+            </div>
+          </div>
+          <div class="inline">
+            <span class="badge yellow">🔒 Khung pháp lý</span>
+            <span class="small">Chỉ chỉnh khi có văn bản hoặc phương án tổ chức mới.</span>
+          </div>
+        </div>
+
+        <div class="program-table-wrap">
+          <table>
+            <thead><tr>
+              <th>Môn</th>
+              <th>Cốt lõi<br>tiết/năm</th>
+              <th>CĐ<br>tiết/năm</th>
+              <th>Tổng nếu<br>có CĐ</th>
+              <th>Phân bổ cốt lõi</th>
+              <th>Phân bổ CĐ</th>
+              <th>Cho phép CĐ</th>
+              <th>Thao tác</th>
+            </tr></thead>
+            <tbody id="programBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- STAFFING -->
+      <section id="page-staffing" class="page">
+        <div class="page-title"><div><h2>Định mức nhân sự</h2><p>Tự tính theo số lớp và nhu cầu thực tế từng môn.</p></div></div>
+        <div class="kpis">
+          <div class="kpi"><div class="label">Lớp hoạt động</div><div class="value" id="kClasses"></div></div>
+          <div class="kpi"><div class="label">Định mức 2,25 GV/lớp</div><div class="value" id="kLegal"></div></div>
+          <div class="kpi"><div class="label">GV hiện có</div><div class="value" id="kTeachers"></div></div>
+          <div class="kpi"><div class="label">Chênh lệch</div><div class="value" id="kGap"></div></div>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>Môn</th><th>Tổng tiết/năm</th><th>Nhu cầu BQ/tuần</th><th>GV quy đổi chuẩn 17</th><th>GV có thẻ môn</th><th>Nhận xét</th></tr></thead><tbody id="staffingBody"></tbody></table></div>
+      </section>
+      <!-- REVIEW -->
+      <section id="page-review" class="page">
+        <div class="page-title">
+          <div>
+            <h2>Ôn tốt nghiệp</h2>
+            <p>Chọn giáo viên → phần mềm tự nhận môn → chỉ hiện các lớp 12 giáo viên đang được phân công dạy môn đó → chọn lớp ôn → nhập số tiết/tuần → chọn tuần bắt đầu.</p>
+          </div>
+        </div>
+        <div class="card">
+          <input id="oId" type="hidden">
+          <div class="review-form-grid">
+            <div class="field"><label>Giáo viên</label><select id="oTeacher" onchange="reviewTeacherChanged()"></select></div>
+            <div class="field"><label>Môn ôn</label><input id="oSubject" readonly></div>
+            <div class="field"><label>Số tiết/tuần</label><input id="oPeriods" type="number" min="0.5" step="0.5" value="3" oninput="previewReviewLoad()"></div>
+            <div class="field"><label>Tuần bắt đầu</label><select id="oStart" onchange="previewReviewLoad()"><option value="">Chưa xác định</option></select></div>
+            <div class="field"><label>Tuần kết thúc</label><input id="oEnd" type="number" min="1" max="35" value="35" oninput="previewReviewLoad()"></div>
+          </div>
+
+          <div class="field" style="margin-top:10px">
+            <label>Lớp ôn</label>
+            <div class="actions" style="margin:0 0 7px">
+              <button type="button" onclick="selectAllReviewClasses(true)">Chọn tất cả lớp được phân công</button>
+              <button type="button" onclick="selectAllReviewClasses(false)">Bỏ chọn</button>
+              <span class="small" id="reviewClassCount"></span>
+            </div>
+            <div id="reviewClassPicker" class="review-classes"></div>
+          </div>
+
+          <div class="field" style="margin-top:10px"><label>Ghi chú</label><input id="oNote"></div>
+          <div id="reviewLoadPreview" class="review-preview">Chọn giáo viên để xem tải dự kiến.</div>
+
+          <div class="actions">
+            <button class="primary" onclick="saveReview()">Lưu phân công ôn</button>
+            <button onclick="clearReview()">Làm trống</button>
+          </div>
+        </div>
+
+        <div class="table-wrap review-table" style="margin-top:12px">
+          <table>
+            <thead><tr><th>Giáo viên</th><th>Môn</th><th>Lớp ôn</th><th>Tiết/tuần</th><th>Bắt đầu</th><th>Kết thúc</th><th>Tải sau ôn</th><th>Trạng thái</th><th></th></tr></thead>
+            <tbody id="reviewBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- YEAR -->
+      <section id="page-year" class="page">
+        <div class="page-title"><div><h2>Năm học</h2><p>Sang năm mới có thể sao chép đội ngũ và cấu trúc lớp nhưng bỏ phân công cũ.</p></div></div>
+        <div class="grid cols2">
+          <div class="card"><h3>Các năm học</h3><div id="yearCards"></div></div>
+          <div class="card">
+            <h3>Tạo năm học mới</h3>
+            <div class="field"><label>Tên năm học</label><input id="newYearName" placeholder="2027-2028"></div>
+            <div class="actions"><label><input id="copyStaff" type="checkbox" checked> Sao chép đội ngũ</label><label><input id="copyClasses" type="checkbox" checked> Sao chép lớp + cấu trúc môn</label></div>
+            <div class="actions"><button onclick="createYear()">Tạo kiểu cũ</button></div>
+            <hr>
+            <h3>Chuyển năm thông minh</h3>
+            <div class="small">Tự đưa khối 10 → 11, 11 → 12, bỏ khối 12 cũ, tạo khối 10 mới; đội ngũ được giữ nhưng phân công/CN/KN phải duyệt lại.</div>
+            <div class="field"><label>Số lớp 10 mới</label><input id="rollGrade10" type="number" min="1" max="12" value="5"></div>
+            <div class="actions"><button class="primary" onclick="rolloverYear()">Chuyển sang năm mới thông minh</button></div>
+          </div>
+        </div>
+      </section>
+      <!-- TOOLS -->
+      <section id="page-tools" class="page">
+        <div class="page-title"><div><h2>Nhập liệu & sao lưu</h2><p>Nhập đội ngũ/lớp từ Excel, sao lưu dữ liệu, phục hồi và đóng gói thành EXE trên Windows.</p></div></div>
+        <div class="tools-grid">
+          <div class="card">
+            <h3 style="margin-top:0">Nhập Excel đầu năm</h3>
+            <div class="drop-zone">
+              <input id="importFile" type="file" accept=".xlsx">
+              <div class="small" style="margin-top:7px">Ưu tiên nhận diện mẫu bảng phân công hiện tại; có xem trước trước khi nhập.</div>
+            </div>
+            <div class="actions">
+              <button class="primary" onclick="previewImport()">Xem trước</button>
+              <label><input id="importTeachers" type="checkbox" checked> Đội ngũ</label>
+              <label><input id="importClasses" type="checkbox" checked> Lớp</label>
+              <button onclick="applyImport()">Nhập dữ liệu</button>
+            </div>
+            <div id="importPreview" class="import-preview">Chưa có dữ liệu xem trước.</div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0">Sao lưu & phục hồi</h3>
+            <p class="small">Nên tải một bản sao lưu trước khi thay đổi lớn hoặc trước khi nhập dữ liệu đầu năm.</p>
+            <div class="actions"><button class="success" onclick="downloadBackup()">⬇ Tải bản sao lưu JSON</button></div>
+            <div class="field" style="margin-top:12px"><label>Phục hồi từ file sao lưu</label><input id="restoreFile" type="file" accept=".json"></div>
+            <div class="actions"><button class="danger" onclick="restoreBackup()">Phục hồi dữ liệu</button></div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0">Bản Windows .EXE</h3>
+            <p class="small">Gói V10.3 có sẵn script <b>TAO_EXE_WINDOWS_V10_3.bat</b>. Chạy script một lần trên máy Windows có Python để tạo file EXE độc lập; sau đó máy sử dụng không cần cài Python.</p>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0">Người thao tác & an toàn dữ liệu</h3>
+            <div class="field"><label>Tên người đang thao tác</label><input id="operatorName" placeholder="Ví dụ: Đặng Cao Kỵ"></div>
+            <div class="actions"><button onclick="saveOperator()">Lưu tên người thao tác</button></div>
+            <div class="small">Tên này được ghi vào lịch sử thay đổi. V10.3 tự lưu snapshot trước/sau các thay đổi chính và giữ riêng BẢN CHÍNH với các phương án thử.</div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+  </main>
+</div>
+
+
+
+
+
+<div class="modal-back" id="recommendModal">
+  <div class="modal" style="width:min(760px,94vw)">
+    <h3 id="recommendTitle">Gợi ý giáo viên</h3>
+    <div class="small" id="recommendDesc"></div>
+    <div id="recommendList" class="recommend-list" style="margin-top:10px"></div>
+    <div class="buttons"><button onclick="recommendModal.classList.remove('show')">Đóng</button></div>
+  </div>
+</div>
+
+<div class="modal-back" id="dutyModal">
+  <div class="modal" style="width:min(760px,95vw);max-height:92vh;overflow:auto">
+    <h3 id="dutyModalTitle">Lịch sử CN/KN</h3>
+    <input id="dutyId" type="hidden">
+    <input id="dutyTeacher" type="hidden">
+
+    <div class="form-grid">
+      <div class="field span2"><label>Giáo viên</label><input id="dutyTeacherName" readonly></div>
+      <div class="field"><label>Loại</label><select id="dutyType" onchange="dutyTypeChanged()"><option>Kiêm nhiệm</option><option>Chức vụ</option><option>Chủ nhiệm</option></select></div>
+      <div class="field"><label>Tiết quy đổi</label><input id="dutyCredit" type="number" min="0" step="0.05" value="0"></div>
+      <div class="field" id="dutyStandardField"><label>Chuẩn áp dụng (nếu thay đổi)</label><input id="dutyStandardOverride" type="number" min="0.1" step="0.01" placeholder="Để trống nếu giữ chuẩn gốc"></div>
+
+      <div class="field span2" id="dutyNameField"><label>Nội dung kiêm nhiệm</label><input id="dutyName" placeholder="Ví dụ: TT.KHTN"></div>
+      <div class="field span2" id="dutyClassField" style="display:none"><label>Lớp chủ nhiệm</label><select id="dutyClass"></select></div>
+
+      <div class="field"><label>Từ tuần</label><input id="dutyStart" type="number" min="1" max="35" value="1"></div>
+      <div class="field"><label>Đến tuần</label><input id="dutyEnd" type="number" min="1" max="35" value="35"></div>
+      <div class="field span2"><label>Ghi chú</label><input id="dutyNote"></div>
+    </div>
+
+    <div class="actions">
+      <button class="primary" onclick="saveDuty(false)">Lưu nhiệm vụ</button>
+      <button onclick="clearDutyForm()">Làm trống</button>
+      <button onclick="closeDutyModal()">Đóng</button>
+    </div>
+
+    <div class="duty-history">
+      <table>
+        <thead><tr><th>Loại</th><th>Nội dung</th><th>Quy đổi</th><th>Chuẩn</th><th>Từ</th><th>Đến</th><th>Ghi chú</th><th></th></tr></thead>
+        <tbody id="dutyHistoryBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal-back" id="programModal">
+  <div class="modal" style="width:min(780px,95vw);max-height:92vh;overflow:auto">
+    <h3 id="programModalTitle">Phân bổ thực dạy</h3>
+    <div id="programLockNote" class="program-lock-note"></div>
+    <input id="prId" type="hidden">
+
+    <div class="form-grid">
+      <div class="field span2"><label>Môn</label><input id="prSubject" readonly></div>
+      <div class="field"><label>Cốt lõi tiết/năm</label><input id="prBaseHours" type="number" step="0.5"></div>
+      <div class="field"><label>Chuyên đề tiết/năm</label><input id="prSpecialtyHours" type="number" step="0.5"></div>
+      <div class="field"><label>Cho phép chuyên đề</label><select id="prCanSpecialty"><option value="1">Có</option><option value="0">Không</option></select></div>
+      <div class="field span2"><label>Nguồn</label><input id="prSource"></div>
+    </div>
+
+    <div class="segment-section">
+      <h4>Phân bổ cốt lõi</h4>
+      <div class="segment-head"><div>Từ tuần</div><div>Đến tuần</div><div>Tiết/tuần</div><div></div></div>
+      <div id="coreSegments"></div>
+      <button type="button" onclick="addProgramSegment('core')">+ Thêm giai đoạn</button>
+      <div id="coreSegmentTotal" class="segment-total"></div>
+    </div>
+
+    <div class="segment-section" id="specialtySegmentSection">
+      <h4>Phân bổ chuyên đề</h4>
+      <div class="segment-head"><div>Từ tuần</div><div>Đến tuần</div><div>Tiết/tuần</div><div></div></div>
+      <div id="specialtySegments"></div>
+      <button type="button" onclick="addProgramSegment('specialty')">+ Thêm giai đoạn</button>
+      <div id="specialtySegmentTotal" class="segment-total"></div>
+    </div>
+
+    <div class="buttons">
+      <button onclick="closeProgramModal()">Hủy</button>
+      <button class="primary" onclick="saveProgram()">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-back" id="structureModal">
+  <div class="modal" style="width:min(720px,94vw)">
+    <h3 id="structureTitle">Sửa cấu trúc lớp</h3>
+    <div class="small" style="margin-bottom:8px">Đây là điều chỉnh riêng của lớp. Tổ hợp gốc vẫn giữ nguyên.</div>
+    <div id="classStructureEditor" class="structure-grid"></div>
+    <div class="buttons">
+      <button onclick="closeStructureModal()">Hủy</button>
+      <button id="restoreTemplateBtn" onclick="restoreTemplate()">Khôi phục theo tổ hợp</button>
+      <button class="primary" onclick="saveClassStructure()">Lưu cấu trúc riêng</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-back" id="confirmModal">
+  <div class="modal">
+    <h3 id="modalTitle">Xác nhận phân công</h3>
+    <div id="modalText"></div>
+    <div class="summary" id="modalSummary"></div>
+    <div class="buttons"><button onclick="closeModal()">Hủy</button><button class="primary" id="modalConfirmBtn">Vẫn phân công</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+let state=null,currentPage='dashboard',gradeFilter='10',dragData=null,splitKeys=new Set(),pendingDrop=null,editingStructureClass='';
+
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function jsq(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+function nfmt(v,d=2){let n=Number(v||0);return n.toLocaleString('vi-VN',{maximumFractionDigits:d});}
+function shortSub(s){return ({'Toán học':'Toán','Ngữ văn':'Văn','Vật lý':'Lý','Hóa học':'Hóa','Sinh học':'Sinh','Tin học':'Tin','Lịch sử':'Sử','Địa lí':'Địa','GDKTPL':'KTPL','TNHN':'TNHN','GD địa phương':'GDĐP','Ngoại ngữ':'Ngoại ngữ'})[s]||s;}
+function showToast(msg){toast.textContent=msg;toast.style.display='block';setTimeout(()=>toast.style.display='none',2200)}
+async function api(url,data=null){let opt=data?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}:{};let r=await fetch(url,opt);let j=await r.json();if(!r.ok||j.error)throw new Error(j.error||'Lỗi');return j;}
+
+async function reload(){
+  try{
+    const y=yearSelect.value||'',w=weekInput.value||1;
+    state=await api('/api/state?year='+encodeURIComponent(y)+'&week='+w);
+    renderAll();
+  }catch(e){alert(e.message)}
+}
+function showPage(p){
+  currentPage=p;document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));
+  const m={dashboard:'Thống kê & đồ thị',assign:'Phân công kéo-thả',scenarios:'Phương án & tối ưu',validation:'Kiểm tra hệ thống',timetable:'Thời khóa biểu',events:'Biến động nhân sự',staff:'Đội ngũ & chuyên môn',templates:'Tổ hợp chương trình',classes:'Lớp học',program:'Chương trình & số tiết',staffing:'Định mức nhân sự',review:'Ôn tốt nghiệp',assistant:'Trợ lý & báo cáo',year:'Năm học',tools:'Nhập liệu & sao lưu'};
+  headerTitle.textContent=m[p];
+  if(p==='scenarios')loadScenarios();
+  if(p==='validation')runValidation();
+  if(p==='dashboard')renderDashboard();
+  if(p==='timetable'){renderTimetable();validateTimetable();}
+  if(p==='events')renderStaffEvents();
+}
+function renderAll(){
+  renderYears();fillSelectors();renderStaff();renderTemplates();renderClassesManage();renderProgram();renderStaffing();renderAssignment();renderReview();renderDashboard();renderTimetable();renderStaffEvents();
+  if(document.getElementById('operatorName')&&!operatorName.value)operatorName.value=state.settings.operator_name||'';
+  if(document.getElementById('exportScope')){
+    const s1=Number(state.settings.semester1_weeks||18),weeks=Number(state.settings.weeks||35);
+    const o1=exportScope.querySelector('option[value="hk1"]'),o2=exportScope.querySelector('option[value="hk2"]');
+    if(o1)o1.textContent=`Học kỳ I (T1-${s1})`;if(o2)o2.textContent=`Học kỳ II (T${s1+1}-${weeks})`;
+  }
+  if(document.getElementById('tkbImportStart')&&document.activeElement!==tkbImportStart)tkbImportStart.value=tkbImportStart.value||weekInput.value||1;
+  if(currentPage==='scenarios')loadScenarios();
+  if(currentPage==='validation')runValidation();
+}
+function fillSelectors(){
+  let opts=state.program_rules.map(x=>`<option>${esc(x.subject)}</option>`).join('');
+  tPrimary.innerHTML='<option value=""></option>'+opts;
+  teacherSubjectFilter.innerHTML='<option value="">Tất cả chuyên môn</option>'+opts;
+  if(document.getElementById('staffSubjectFilter')){
+    const oldStaffFilter=staffSubjectFilter.value||'';
+    staffSubjectFilter.innerHTML='<option value="">Tất cả chuyên môn</option>'+opts;
+    if([...staffSubjectFilter.options].some(o=>o.value===oldStaffFilter))staffSubjectFilter.value=oldStaffFilter;
+  }
+  let activeT=state.teachers.filter(x=>x.active),tOpts='<option value=""></option>'+activeT.map(t=>`<option>${esc(t.name)}</option>`).join('');
+  if(document.getElementById('tkbTeacher'))tkbTeacher.innerHTML=tOpts;
+  if(document.getElementById('evTeacher'))evTeacher.innerHTML=tOpts;
+  if(document.getElementById('evReplacement'))evReplacement.innerHTML=tOpts;
+  if(document.getElementById('tkbClass'))tkbClass.innerHTML='<option value=""></option>'+state.classes.filter(c=>c.active).map(c=>`<option>${esc(c.class_name)}</option>`).join('');
+  if(document.getElementById('tkbSubject'))tkbSubject.innerHTML='<option value=""></option>'+opts;
+  cHomeroom.innerHTML=tOpts;oTeacher.innerHTML=tOpts;
+  if(oStart.options.length<=1)for(let i=1;i<=state.settings.weeks;i++)oStart.innerHTML+=`<option value="${i}">Tuần ${i}</option>`;
+  renderTemplateSubjectEditor();
+  refreshClassTemplateOptions();
+  renderReviewClassPicker();
+}
+function renderYears(){yearSelect.innerHTML=state.years.map(y=>`<option value="${esc(y.name)}">${esc(y.name)}</option>`).join('');yearSelect.value=state.active_year;yearCards.innerHTML=state.years.map(y=>`<div style="padding:9px;border-bottom:1px solid #eee"><b>${esc(y.name)}</b> ${y.is_active?'<span class="badge green">Đang dùng</span>':''}</div>`).join('')}
+async function changeYear(){await api('/api/year/active',{name:yearSelect.value});await reload()}
+async function createYear(){try{await api('/api/year/new',{name:newYearName.value,copy_staff:copyStaff.checked,copy_classes:copyClasses.checked});newYearName.value='';await reload()}catch(e){alert(e.message)}}
+
+// ===== Dashboard =====
+const CHART_COLORS={blue:'#3b82f6',green:'#16a34a',red:'#dc2626',yellow:'#d97706',gray:'#94a3b8',purple:'#7c3aed',teal:'#0891b2'};
+
+function svgEscape(s){return esc(s)}
+function niceMax(v){if(v<=0)return 1;const p=Math.pow(10,Math.floor(Math.log10(v)));const n=v/p;return (n<=1?1:n<=2?2:n<=5?5:10)*p}
+function textSvg(x,y,text,attrs=''){return `<text x="${x}" y="${y}" ${attrs}>${svgEscape(text)}</text>`}
+
+async function renderDashboard(){
+  if(!state)return;
+  try{
+    const w=Number(weekInput.value||1);
+    const d=await api('/api/dashboard?week='+w);
+    dkTeachers.textContent=d.kpis.teachers;
+    dkClasses.textContent=d.kpis.classes;
+    dkAssigned.textContent=nfmt(d.kpis.assignment_percent,1)+'%';
+    dkOver.textContent=d.kpis.over_count;
+    dkUnassigned.textContent=d.kpis.unassigned;
+    dashWeekBadge.textContent='Tuần '+w;
+
+    renderTeacherLoadChart(d.teacher_loads);
+    renderLoadStatusChart(d.load_status);
+    renderGradeChart(d.grades);
+    renderStaffingChart(d.staffing);
+    renderHeatmap(d.heatmap||[]);
+    renderSubjectGap(d.subject_gaps||[]);
+
+    const old=dashTeacherSelect.value;
+    dashTeacherSelect.innerHTML=state.teachers.filter(t=>t.active).map(t=>`<option>${esc(t.name)}</option>`).join('');
+    if(old&&[...dashTeacherSelect.options].some(o=>o.value===old))dashTeacherSelect.value=old;
+    else if(!dashTeacherSelect.value&&dashTeacherSelect.options.length)dashTeacherSelect.selectedIndex=0;
+    renderTeacherTrend();
+  }catch(e){
+    console.error(e);
+  }
+}
+
+function renderTeacherLoadChart(rows){
+  const data=[...rows].sort((a,b)=>b.diff-a.diff);
+  const left=185,right=35,top=18,rowH=24,barH=7,width=920,height=top+data.length*rowH+34;
+  const max=niceMax(Math.max(...data.map(x=>Math.max(x.total,x.standard)),1));
+  let s=`<svg viewBox="0 0 ${width} ${height}" role="img">`;
+  const chartW=width-left-right;
+  [0,.25,.5,.75,1].forEach(p=>{
+    const x=left+chartW*p,val=max*p;
+    s+=`<line x1="${x}" y1="${top-6}" x2="${x}" y2="${height-24}" stroke="#e5e7eb"/>`;
+    s+=textSvg(x,height-7,nfmt(val,1),'font-size="10" fill="#64748b" text-anchor="middle"');
+  });
+  data.forEach((r,i)=>{
+    const y=top+i*rowH;
+    s+=textSvg(left-8,y+10,r.teacher,'font-size="10.5" fill="#334155" text-anchor="end"');
+    const tw=chartW*r.total/max,sw=chartW*r.standard/max;
+    const color=r.diff>0?CHART_COLORS.red:r.diff<0?CHART_COLORS.yellow:CHART_COLORS.green;
+    s+=`<rect x="${left}" y="${y+2}" width="${Math.max(tw,1)}" height="${barH}" rx="3" fill="${color}"><title>${svgEscape(r.teacher)}: ${nfmt(r.total)}/${nfmt(r.standard)} (${r.diff>0?'+':''}${nfmt(r.diff)})</title></rect>`;
+    s+=`<line x1="${left+sw}" y1="${y}" x2="${left+sw}" y2="${y+12}" stroke="#0f172a" stroke-width="1.5"><title>Chuẩn ${nfmt(r.standard)}</title></line>`;
+    s+=textSvg(Math.min(left+tw+5,width-30),y+10,nfmt(r.total),'font-size="9.5" fill="#475569"');
+  });
+  s+=`</svg>`;
+  chartTeacherLoad.innerHTML=s;
+}
+
+function renderLoadStatusChart(st){
+  const values=[
+    {name:'Thiếu chuẩn',v:st.under,color:CHART_COLORS.yellow},
+    {name:'Đủ chuẩn',v:st.equal,color:CHART_COLORS.green},
+    {name:'Vượt chuẩn',v:st.over,color:CHART_COLORS.red}
+  ];
+  const total=values.reduce((a,b)=>a+b.v,0)||1;
+  const width=520,height=255,cx=150,cy=118,r=74,stroke=32,circ=2*Math.PI*r;
+  let acc=0,s=`<svg viewBox="0 0 ${width} ${height}">`;
+  s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#eef2f7" stroke-width="${stroke}"/>`;
+  values.forEach(x=>{
+    const frac=x.v/total,dash=frac*circ,offset=-acc*circ;
+    s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${x.color}" stroke-width="${stroke}" stroke-dasharray="${dash} ${circ-dash}" stroke-dashoffset="${offset}" transform="rotate(-90 ${cx} ${cy})"><title>${x.name}: ${x.v}</title></circle>`;
+    acc+=frac;
+  });
+  s+=textSvg(cx,cy-2,String(total),'font-size="28" font-weight="800" fill="#0f172a" text-anchor="middle"');
+  s+=textSvg(cx,cy+18,'GV','font-size="11" fill="#64748b" text-anchor="middle"');
+  values.forEach((x,i)=>{
+    const y=68+i*48;
+    s+=`<circle cx="305" cy="${y}" r="6" fill="${x.color}"/>`;
+    s+=textSvg(320,y+4,`${x.name}: ${x.v}`,'font-size="12" fill="#334155"');
+  });
+  s+='</svg>';chartLoadStatus.innerHTML=s;
+}
+
+function renderGradeChart(rows){
+  const width=520,height=255,left=95,right=35,top=25,bottom=38,chartW=width-left-right,barH=30,gap=24;
+  let s=`<svg viewBox="0 0 ${width} ${height}">`;
+  rows.forEach((r,i)=>{
+    const y=top+i*(barH+gap),a=r.assigned,u=r.unassigned,total=a+u||1;
+    const aw=chartW*a/total,uw=chartW*u/total;
+    s+=textSvg(left-10,y+20,'Khối '+r.grade,'font-size="12" font-weight="700" fill="#334155" text-anchor="end"');
+    s+=`<rect x="${left}" y="${y}" width="${aw}" height="${barH}" rx="5" fill="${CHART_COLORS.green}"><title>Đã gán ${a}</title></rect>`;
+    s+=`<rect x="${left+aw}" y="${y}" width="${uw}" height="${barH}" rx="5" fill="${CHART_COLORS.gray}"><title>Chưa gán ${u}</title></rect>`;
+    s+=textSvg(left+chartW+8,y+20,nfmt(r.percent,1)+'%','font-size="11" fill="#475569"');
+  });
+  s+=`</svg>`;chartGradeCompletion.innerHTML=s;
+}
+
+function renderStaffingChart(rows){
+  const data=[...rows].sort((a,b)=>b.need-a.need);
+  const left=155,right=45,top=18,rowH=29,width=920,height=top+data.length*rowH+35;
+  const max=niceMax(Math.max(...data.map(x=>Math.max(x.need,x.available)),1));
+  const chartW=width-left-right;
+  let s=`<svg viewBox="0 0 ${width} ${height}">`;
+  [0,.25,.5,.75,1].forEach(p=>{
+    const x=left+chartW*p;
+    s+=`<line x1="${x}" y1="${top-5}" x2="${x}" y2="${height-22}" stroke="#e5e7eb"/>`;
+    s+=textSvg(x,height-7,nfmt(max*p,1),'font-size="10" fill="#64748b" text-anchor="middle"');
+  });
+  data.forEach((r,i)=>{
+    const y=top+i*rowH;
+    s+=textSvg(left-8,y+13,shortSub(r.subject),'font-size="10.5" fill="#334155" text-anchor="end"');
+    const nw=chartW*r.need/max,aw=chartW*r.available/max;
+    s+=`<rect x="${left}" y="${y+1}" width="${nw}" height="8" rx="3" fill="${CHART_COLORS.blue}"><title>Nhu cầu ${nfmt(r.need)}</title></rect>`;
+    s+=`<rect x="${left}" y="${y+12}" width="${aw}" height="8" rx="3" fill="${CHART_COLORS.green}"><title>Có thể dạy ${nfmt(r.available)}</title></rect>`;
+  });
+  s+='</svg>';chartStaffing.innerHTML=s;
+}
+
+
+function heatColor(diff){
+  if(diff>3)return '#b91c1c';
+  if(diff>0)return '#ef4444';
+  if(Math.abs(diff)<0.01)return '#16a34a';
+  if(diff>=-2)return '#f59e0b';
+  return '#fde68a';
+}
+function renderHeatmap(rows){
+  if(!rows.length){chartHeatmap.innerHTML='';return}
+  const cols=36;
+  let s=`<div class="heatmap-grid" style="grid-template-columns:160px repeat(35,24px)">`;
+  s+=`<div></div>`+[...Array(35)].map((_,i)=>`<div style="font-size:9px;text-align:center">${i+1}</div>`).join('');
+  rows.forEach(r=>{
+    s+=`<div class="heatmap-label">${esc(r.teacher)}</div>`;
+    r.values.forEach(v=>{
+      s+=`<div class="heatmap-cell" style="background:${heatColor(Number(v.diff||0))}" title="${esc(r.teacher)} · T${v.week}: ${nfmt(v.total)}/${nfmt(v.standard)} · ${v.diff>0?'dư ':v.diff<0?'thiếu ':'đủ '}${nfmt(Math.abs(v.diff))}"></div>`;
+    });
+  });
+  s+='</div>';chartHeatmap.innerHTML=s;
+}
+function renderSubjectGap(rows){
+  const data=[...rows].sort((a,b)=>a.gap-b.gap);
+  const width=920,left=160,right=40,top=20,rowH=28,height=top+data.length*rowH+34;
+  const maxAbs=Math.max(1,...data.map(x=>Math.abs(Number(x.gap||0))));
+  const center=left+(width-left-right)/2,half=(width-left-right)/2;
+  let s=`<svg viewBox="0 0 ${width} ${height}">`;
+  s+=`<line x1="${center}" y1="${top-8}" x2="${center}" y2="${height-22}" stroke="#334155" stroke-width="1.5"/>`;
+  data.forEach((r,i)=>{
+    const y=top+i*rowH,g=Number(r.gap||0),w=half*Math.abs(g)/maxAbs;
+    s+=textSvg(left-8,y+12,shortSub(r.subject),'font-size="10.5" fill="#334155" text-anchor="end"');
+    if(g>=0){
+      s+=`<rect x="${center}" y="${y+3}" width="${w}" height="10" rx="3" fill="${CHART_COLORS.green}"><title>Dư năng lực ${nfmt(g)}</title></rect>`;
+      s+=textSvg(center+w+5,y+12,'+'+nfmt(g),'font-size="10" fill="#166534"');
+    }else{
+      s+=`<rect x="${center-w}" y="${y+3}" width="${w}" height="10" rx="3" fill="${CHART_COLORS.red}"><title>Thiếu năng lực ${nfmt(Math.abs(g))}</title></rect>`;
+      s+=textSvg(center-w-5,y+12,nfmt(g),'font-size="10" fill="#991b1b" text-anchor="end"');
+    }
+  });
+  s+='</svg>';chartSubjectGap.innerHTML=s;
+}
+
+async function renderTeacherTrend(){
+  if(!state||!dashTeacherSelect?.value)return;
+  try{
+    const d=await api('/api/teacher_trend?teacher='+encodeURIComponent(dashTeacherSelect.value));
+    renderTrendChart(d.rows);
+  }catch(e){chartTeacherTrend.innerHTML='<div class="small">'+esc(e.message)+'</div>'}
+}
+function renderTrendChart(rows){
+  const width=940,height=310,left=55,right=25,top=22,bottom=44,chartW=width-left-right,chartH=height-top-bottom;
+  const max=niceMax(Math.max(...rows.map(r=>Math.max(r.total,r.standard)),1));
+  const x=w=>left+chartW*(w-1)/34;
+  const y=v=>top+chartH-(v/max)*chartH;
+  let s=`<svg viewBox="0 0 ${width} ${height}">`;
+  [0,.25,.5,.75,1].forEach(p=>{
+    const yy=top+chartH*(1-p),val=max*p;
+    s+=`<line x1="${left}" y1="${yy}" x2="${width-right}" y2="${yy}" stroke="#e5e7eb"/>`;
+    s+=textSvg(left-8,yy+4,nfmt(val,1),'font-size="10" fill="#64748b" text-anchor="end"');
+  });
+  [1,5,10,15,20,25,30,35].forEach(w=>{
+    const xx=x(w);s+=`<line x1="${xx}" y1="${top}" x2="${xx}" y2="${top+chartH}" stroke="#f1f5f9"/>`;
+    s+=textSvg(xx,height-18,'T'+w,'font-size="10" fill="#64748b" text-anchor="middle"');
+  });
+  const totalPts=rows.map(r=>`${x(r.week)},${y(r.total)}`).join(' ');
+  const stdPts=rows.map(r=>`${x(r.week)},${y(r.standard)}`).join(' ');
+  s+=`<polyline points="${stdPts}" fill="none" stroke="${CHART_COLORS.gray}" stroke-width="2" stroke-dasharray="6 5"/>`;
+  s+=`<polyline points="${totalPts}" fill="none" stroke="${CHART_COLORS.blue}" stroke-width="3"/>`;
+  rows.forEach(r=>{
+    const color=r.diff>0?CHART_COLORS.red:r.diff<0?CHART_COLORS.yellow:CHART_COLORS.green;
+    s+=`<circle cx="${x(r.week)}" cy="${y(r.total)}" r="3" fill="${color}"><title>Tuần ${r.week}: ${nfmt(r.total)}/${nfmt(r.standard)} · ${r.diff>0?'dư ':r.diff<0?'thiếu ':'đủ '}${nfmt(Math.abs(r.diff))}</title></circle>`;
+  });
+  s+='</svg>';
+  chartTeacherTrend.innerHTML=s;
+}
+
+
+// ===== Assignment main =====
+function setGrade(g){gradeFilter=g;document.querySelectorAll('.grade-tab').forEach(b=>b.classList.toggle('active',b.dataset.grade===g));renderAssignment()}
+function renderAssignment(){renderClassesCards();renderTeachers()}
+function hasLock(type,key){
+  return (state.locks||[]).some(x=>x.scope_type===type&&x.scope_key===key);
+}
+function classLocked(c){return hasLock('class',c)}
+function subjectLocked(c,s){return classLocked(c)||hasLock('subject',c+'|'+s)}
+function partLocked(c,s,t){return subjectLocked(c,s)||hasLock('requirement',c+'|'+s+'|'+t)}
+async function toggleLock(type,key){
+  try{
+    const r=await api('/api/lock/toggle',{scope_type:type,scope_key:key});
+    showToast(r.locked?'Đã khóa':'Đã mở khóa');await reload();
+  }catch(e){alert(e.message)}
+}
+function renderClassesCards(){
+  const classes=state.classes.filter(c=>c.active&&(!gradeFilter||String(c.grade)===gradeFilter));
+  const groups=state.groups.filter(g=>classes.some(c=>c.class_name===g.class_name));
+  let assigned=groups.filter(g=>g.assignment_status!=='unassigned').length;
+  assignStats.textContent=`${groups.length} thẻ môn · ${assigned} đã có GV · ${groups.length-assigned} chưa gán`;
+  classesGrid.innerHTML=classes.map(c=>{
+    let gs=groups.filter(g=>g.class_name===c.class_name),locked=classLocked(c.class_name);
+    return `<section class="class-box ${locked?'locked-card':''}"><div class="class-head"><div class="class-name">${esc(c.class_name)}</div><div><div class="class-program">${esc(c.program_name||'')}</div><div class="class-program">${c.homeroom_teacher?'GVCN: '+esc(c.homeroom_teacher):''}</div></div><button class="mini-btn class-lock-btn" onclick="toggleLock('class','${jsq(c.class_name)}')">${locked?'🔓 Mở lớp':'🔒 Khóa lớp'}</button></div><div class="subjects-grid">${gs.map(subjectCard).join('')}</div></section>`
+  }).join('');
+}
+function subjectCard(g){
+  const key=g.class_name+'|'+g.subject,split=splitKeys.has(key),assigned=g.assignment_status!=='unassigned';
+  const locked=subjectLocked(g.class_name,g.subject);
+  let cls='subject-drop '+(g.assignment_status==='split'?'split':assigned?'assigned':'unassigned')+(locked?' locked-card':'');
+  let status=g.assignment_status==='unassigned'?'<span class="teacher-assigned empty">Chưa có giáo viên</span>':`<span class="teacher-assigned">${esc(g.teacher_label)}</span>`;
+  let actions=g.has_specialty?`<button class="mini-btn" onclick="event.stopPropagation();toggleSplit('${jsq(key)}')">${split?'Gộp':'Tách CĐ'}</button>`:'';
+  actions+=`<button class="mini-btn" title="Gợi ý GV" onclick="event.stopPropagation();openRecommend('${jsq(g.class_name)}','${jsq(g.subject)}','')">★</button>`;
+  actions+=`<button class="mini-btn" title="${locked?'Mở khóa môn':'Khóa môn'}" onclick="event.stopPropagation();toggleLock('subject','${jsq(key)}')">${locked?'🔓':'🔒'}</button>`;
+  let remove=assigned&&!locked?`<button class="mini-btn" title="Bỏ gán" onclick="event.stopPropagation();unassign('${jsq(g.class_name)}','${jsq(g.subject)}','')">×</button>`:'';
+  if(split){
+    return `<div class="${cls}" data-subject="${esc(g.subject)}">
+      <div class="subject-actions">${actions}</div>
+      <div class="subject-title">${esc(shortSub(g.subject))} ${g.has_specialty?'<span class="badge purple">CĐ</span>':''}</div>
+      <div class="subject-meta">${nfmt(g.total_hours)} tiết/năm</div>
+      <div class="part-wrap">${g.parts.map(p=>partCard(g,p)).join('')}</div>
+    </div>`;
+  }
+  return `<div class="${cls}" data-subject="${esc(g.subject)}" data-class="${esc(g.class_name)}" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="dropSubject(event,'${jsq(g.class_name)}','${jsq(g.subject)}','')">
+    <div class="subject-actions">${actions}${remove}</div>
+    <div class="subject-title">${esc(shortSub(g.subject))} ${g.has_specialty?'<span class="badge purple">+ CĐ</span>':''}</div>
+    <div class="subject-meta">${nfmt(g.total_hours)} tiết/năm</div>
+    ${status}
+  </div>`;
+}
+function partCard(g,p){
+  let assigned=!!p.teacher,locked=partLocked(g.class_name,g.subject,p.req_type);
+  const rkey=g.class_name+'|'+g.subject+'|'+p.req_type;
+  return `<div class="part-drop ${assigned?'assigned':'unassigned'} ${locked?'locked-card':''}" data-subject="${esc(g.subject)}" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="dropSubject(event,'${jsq(g.class_name)}','${jsq(g.subject)}','${jsq(p.req_type)}')">
+    <div style="float:right;display:flex;gap:2px">
+      <button class="mini-btn" onclick="event.stopPropagation();openRecommend('${jsq(g.class_name)}','${jsq(g.subject)}','${jsq(p.req_type)}')">★</button>
+      <button class="mini-btn" onclick="event.stopPropagation();toggleLock('requirement','${jsq(rkey)}')">${locked?'🔓':'🔒'}</button>
+      ${assigned&&!locked?`<button class="remove-x" onclick="event.stopPropagation();unassign('${jsq(g.class_name)}','${jsq(g.subject)}','${jsq(p.req_type)}')">×</button>`:''}
+    </div>
+    <div class="part-title">${esc(p.req_type)} · ${nfmt(p.annual_hours)} tiết/năm</div>
+    <div class="part-teacher">${p.teacher?esc(p.teacher):'Chưa có GV'}</div>
+  </div>`;
+}
+function toggleSplit(k){splitKeys.has(k)?splitKeys.delete(k):splitKeys.add(k);renderClassesCards()}
+
+function renderTeachers(){
+  let q=(teacherSearch.value||'').trim().toLowerCase(),sf=teacherSubjectFilter.value||'';
+  let ts=state.teachers.filter(t=>t.active).filter(t=>!q||(t.name+' '+t.primary_subject+' '+(t.can_teach_list||[]).join(' ')).toLowerCase().includes(q)).filter(t=>!sf||(t.can_teach_list||[]).includes(sf)||t.primary_subject===sf);
+  teachersList.innerHTML=ts.map(t=>{
+    let L=state.loads[t.name]||{},cur=L.current||{},mx=L.max||{},over=(cur.diff||0)>0;
+    let load=`${nfmt(cur.total)}/${nfmt(cur.standard)}`;
+    let max=`Cao nhất ${nfmt(mx.total)}${mx.week?' · T'+mx.week:''}`;
+    const teachingClasses=staffTeachingClasses(t.name,Number(weekInput.value||1))||'Chưa có lớp';
+    let cards=(t.can_teach_list||[]).map(s=>`<div class="teacher-subject-card" draggable="true" data-teacher="${esc(t.name)}" data-subject="${esc(s)}" ondragstart="startDrag(event,'${jsq(t.name)}','${jsq(s)}')" ondragend="endDrag(event)">${esc(shortSub(s))}</div>`).join('');
+    return `<div class="teacher-box"><div class="teacher-top"><div><div class="teacher-name">${esc(t.name)}</div><div class="teacher-meta">${esc(t.primary_subject||'')} · ${esc(t.employment_type)} · tuần ${t.active_start}-${t.active_end}</div><div class="teacher-meta teacher-classes-now" title="${esc(teachingClasses)}"><b>Lớp đang dạy:</b> ${esc(teachingClasses)}</div></div><div style="text-align:right"><div class="load ${over?'over':'ok'}">${load}</div><div class="teacher-meta">${max}</div></div></div><div class="teacher-subjects">${cards}</div></div>`
+  }).join('');
+}
+function startDrag(e,teacher,subject){
+  dragData={teacher,subject};e.dataTransfer.setData('text/plain',JSON.stringify(dragData));e.dataTransfer.effectAllowed='copy';e.currentTarget.classList.add('dragging-source');
+  document.querySelectorAll('.subject-drop,.part-drop').forEach(el=>{el.classList.remove('match','blocked');let s=el.dataset.subject||'';el.classList.add(s===subject?'match':'blocked')})
+}
+function endDrag(e){e.currentTarget.classList.remove('dragging-source');clearDragClasses();dragData=null}
+function clearDragClasses(){document.querySelectorAll('.subject-drop,.part-drop').forEach(el=>el.classList.remove('match','blocked'))}
+function allowDrop(e){if(!dragData)return;let s=e.currentTarget.dataset.subject||'';if(s===dragData.subject){e.preventDefault();e.currentTarget.classList.add('match')}}
+function leaveDrop(e){/* giữ highlight tổng thể */}
+async function dropSubject(e,className,subject,reqType){
+  e.preventDefault();e.stopPropagation();
+  let d=dragData;
+  if(!d){try{d=JSON.parse(e.dataTransfer.getData('text/plain'))}catch{}}
+  clearDragClasses();
+  if(!d)return;
+  if(d.subject!==subject){showToast('Không thể thả: khác chuyên môn');return}
+  try{
+    let w=weekInput.value||1;
+    let impact=await api('/api/impact?class='+encodeURIComponent(className)+'&subject='+encodeURIComponent(subject)+'&teacher='+encodeURIComponent(d.teacher)+'&req_type='+encodeURIComponent(reqType||'')+'&week='+w);
+    let p=impact.target;
+    pendingDrop={className,subject,reqType,teacher:d.teacher,preview:p,impact};
+    openConfirm(p,impact);
+  }catch(err){alert(err.message)}
+}
+function openConfirm(p,impact=null){
+  modalTitle.textContent=`Phân tích tác động · ${p.teacher} → ${p.class_name} · ${shortSub(p.subject)}`;
+  let warns=[];
+  if(!p.compatible)warns.push('Không đúng chuyên môn đã khai');
+  if(!p.covers)warns.push('Hiệu lực/biến động nhân sự không phủ nhiệm vụ');
+  if((p.after.diff||0)>0)warns.push(`Sau khi gán vượt ${nfmt(p.after.diff)} tiết ở tuần đang xem`);
+  if((p.max_after.diff||0)>0)warns.push(`Cao nhất năm vượt ${nfmt(p.max_after.diff)} tiết`);
+  if(impact?.timetable_conflicts?.length)warns.push(`Có ${impact.timetable_conflicts.length} xung đột TKB`);
+  if(impact?.blocking_events?.length)warns.push(`Có ${impact.blocking_events.length} biến động nhân sự chặn dạy`);
+  modalText.innerHTML=warns.length?`<span class="badge red">${warns.map(esc).join(' · ')}</span>`:`<span class="badge green">Không phát hiện rủi ro lớn trước khi đổi</span>`;
+
+  let oldHtml='';
+  if(impact?.old_teachers?.length){
+    oldHtml='<div class="impact-block"><b>Giáo viên đang rời nhiệm vụ:</b><br>'+impact.old_teachers.map(x=>
+      `${esc(x.teacher)}: ${nfmt(x.before.total)}/${nfmt(x.before.standard)} → <b>${nfmt(x.after.total)}/${nfmt(x.after.standard)}</b> · cao nhất sau đổi T${x.max_after.week}: ${nfmt(x.max_after.total)}/${nfmt(x.max_after.standard)}`
+    ).join('<br>')+'</div>';
+  }
+  let tkbHtml='';
+  if(impact?.timetable_conflicts?.length){
+    tkbHtml='<div class="impact-block"><b>Xung đột TKB:</b><br>'+impact.timetable_conflicts.slice(0,8).map(x=>`${esc(x.session||'')} ${esc(x.day)} tiết ${x.period}: đang dạy ${esc(x.other_class)} ${esc(shortSub(x.other_subject))}`).join('<br>')+'</div>';
+  }
+  let evHtml='';
+  if(impact?.blocking_events?.length){
+    evHtml='<div class="impact-block"><b>Biến động nhân sự:</b><br>'+impact.blocking_events.map(x=>`${esc(x.event_type)} T${x.start_week}-${x.end_week}${x.note?' · '+esc(x.note):''}`).join('<br>')+'</div>';
+  }
+  modalSummary.innerHTML=`<b>Người nhận:</b> hiện ${nfmt(p.current.total)}/${nfmt(p.current.standard)} → sau đổi <b>${nfmt(p.after.total)}/${nfmt(p.after.standard)}</b> (${p.after.diff>0?'dư '+nfmt(p.after.diff):p.after.diff<0?'thiếu '+nfmt(-p.after.diff):'đủ chuẩn'})<br>
+    Cao nhất năm sau đổi: <b>${nfmt(p.max_after.total)}/${nfmt(p.max_after.standard)}</b> tại tuần ${p.max_after.week}<br>
+    Khối lượng thêm tuần đang xem: <b>+${nfmt(p.added_weekly)} tiết</b>${oldHtml}${tkbHtml}${evHtml}`;
+  modalConfirmBtn.textContent=impact?.safe?'Xác nhận thay đổi':'Vẫn thay đổi';
+  modalConfirmBtn.onclick=commitDrop;confirmModal.classList.add('show')
+}
+function closeModal(){confirmModal.classList.remove('show');pendingDrop=null}
+async function commitDrop(){
+  if(!pendingDrop)return;
+  await api('/api/drop',{class_name:pendingDrop.className,subject:pendingDrop.subject,req_type:pendingDrop.reqType||null,teacher:pendingDrop.teacher});
+  confirmModal.classList.remove('show');showToast(`Đã gán ${pendingDrop.teacher}`);pendingDrop=null;await reload()
+}
+async function unassign(className,subject,reqType){
+  if(!confirm(`Bỏ phân công ${className} · ${shortSub(subject)}${reqType?' · '+reqType:''}?`))return;
+  await api('/api/drop',{class_name:className,subject,req_type:reqType||null,teacher:''});await reload()
+}
+
+// ===== Recommendation =====
+async function openRecommend(className,subject,reqType){
+  recommendTitle.textContent=`Gợi ý GV · ${className} · ${shortSub(subject)}${reqType?' · '+reqType:''}`;
+  recommendDesc.textContent='Xếp hạng ưu tiên: đúng chuyên môn, đủ hiệu lực, không vượt chuẩn và tải cân bằng.';
+  recommendList.innerHTML='<div class="small">Đang tính...</div>';
+  recommendModal.classList.add('show');
+  try{
+    const r=await api('/api/recommend?class='+encodeURIComponent(className)+'&subject='+encodeURIComponent(subject)+
+      '&req_type='+encodeURIComponent(reqType||'')+'&week='+encodeURIComponent(weekInput.value||1)+'&limit=10');
+    recommendList.innerHTML=r.rows.map(x=>{
+      const d=Number(x.after.diff||0),m=Number(x.max_after.diff||0);
+      const st=!x.compatible?'<span class="badge red">Sai CM</span>':!x.covers?'<span class="badge yellow">Thiếu hiệu lực</span>':(x.timetable_conflicts||0)>0?'<span class="badge red">'+x.timetable_conflicts+' trùng TKB</span>':m>0?'<span class="badge red">Có tuần vượt</span>':'<span class="badge green">Phù hợp</span>';
+      return `<div class="recommend-row">
+        <div><b>${esc(x.teacher)}</b><div class="small">${esc(x.employment_type||'')} · ${esc(x.subject||'')}</div></div>
+        <div>${nfmt(x.after.total)}/${nfmt(x.after.standard)}<div class="small">sau gán</div></div>
+        <div>${d>0?'<span class="badge red">+'+nfmt(d)+'</span>':'<span class="badge green">'+nfmt(d)+'</span>'}<div class="small">dư/thiếu</div></div>
+        <div>${nfmt(x.max_after.total)}/${nfmt(x.max_after.standard)}<div class="small">max T${x.max_after.week}</div></div>
+        <div>${st}<br><button class="primary" style="margin-top:5px" onclick="chooseRecommended('${jsq(x.teacher)}','${jsq(className)}','${jsq(subject)}','${jsq(reqType||'')}')">Chọn</button></div>
+      </div>`;
+    }).join('')||'<div class="small">Không có giáo viên phù hợp.</div>';
+  }catch(e){recommendList.innerHTML='<span class="badge red">'+esc(e.message)+'</span>'}
+}
+async function chooseRecommended(teacher,className,subject,reqType){
+  try{
+    const impact=await api('/api/impact?class='+encodeURIComponent(className)+'&subject='+encodeURIComponent(subject)+'&teacher='+encodeURIComponent(teacher)+'&req_type='+encodeURIComponent(reqType||'')+'&week='+encodeURIComponent(weekInput.value||1));
+    pendingDrop={className,subject,reqType,teacher,preview:impact.target,impact};
+    recommendModal.classList.remove('show');
+    openConfirm(impact.target,impact);
+  }catch(e){alert(e.message)}
+}
+
+// ===== Scenario / history =====
+async function loadScenarios(){
+  try{
+    const [s,h,wf]=await Promise.all([api('/api/scenarios'),api('/api/history?limit=80'),api('/api/workflow/history')]);
+    scenarioGrid.innerHTML=s.rows.map(x=>{
+      const m=x.metrics||{};
+      const ws=x.workflow_status||'DRAFT';
+      const wsLabel=ws==='APPROVED'?'BGĐ đã duyệt':ws==='REVIEWED'?'Tổ trưởng đã kiểm tra':'Đang soạn';
+      const wsClass=ws==='APPROVED'?'status-approved':ws==='REVIEWED'?'status-reviewed':'status-draft';
+      return `<div class="scenario-card ${x.active?'active':''}">
+        <h3 style="margin:0 0 3px">${esc(x.name)} ${x.is_baseline?'<span class="badge blue">Bản chính</span>':''} ${x.active?'<span class="badge green">Đang làm việc</span>':''}</h3>
+        <div class="small">${esc(x.description||'')}<br>Cập nhật: ${esc(x.updated_at||'')}</div>
+        <div style="margin:6px 0"><span class="workflow-status ${wsClass}">${wsLabel}</span>${x.approved_by?` <span class="small">· ${esc(x.approved_by)} · ${esc(x.approved_at||'')}</span>`:''}</div>
+        <div style="margin-top:8px">
+          <div class="metric-row"><span>Hoàn thành</span><b>${nfmt(m.coverage_percent||0,1)}%</b></div>
+          <div class="metric-row"><span>Chưa gán</span><b>${m.unassigned??0}</b></div>
+          <div class="metric-row"><span>GV vượt chuẩn</span><b>${m.over_count??0}</b></div>
+          <div class="metric-row"><span>Tổng dư vượt</span><b>${nfmt(m.sum_over||0)}</b></div>
+          <div class="metric-row"><span>Sai chuyên môn</span><b>${m.wrong_subject??0}</b></div>
+          <div class="metric-row"><span>Độ lệch tải</span><b>${nfmt(m.load_spread||0)}</b></div>
+        </div>
+        <div class="actions">
+          ${!x.active?`<button class="primary" onclick="switchScenario(${x.id})">Chuyển sang</button>`:''}
+          ${!x.is_baseline?`<button onclick="applyScenario(${x.id})">Áp dụng làm Bản chính</button><button class="danger" onclick="deleteScenario(${x.id})">Xóa</button>`:''}
+        </div>
+      </div>`;
+    }).join('');
+    const active=s.rows.find(x=>x.active);
+    const status=active?.workflow_status||'DRAFT';
+    workflowStatus.textContent=status==='APPROVED'?'BGĐ đã duyệt':status==='REVIEWED'?'Tổ trưởng đã kiểm tra':'Đang soạn thảo';
+    workflowStatus.className='workflow-status '+(status==='APPROVED'?'status-approved':status==='REVIEWED'?'status-reviewed':'status-draft');
+    if(state?.settings?.operator_name&&!workflowActor.value)workflowActor.value=state.settings.operator_name;
+    historyBody.innerHTML=h.rows.map(r=>`<tr><td>${esc(r.created_at)}</td><td>${esc(r.actor||'')}</td><td>${esc(r.action)}</td><td>${r.undone?'<span class="badge">Đã hoàn tác</span>':'<span class="badge green">Đã áp dụng</span>'}</td></tr>`).join('');
+  }catch(e){alert(e.message)}
+}
+async function createScenario(){
+  try{
+    if(!scenarioName.value.trim()){alert('Nhập tên phương án.');return}
+    await api('/api/scenario/create',{name:scenarioName.value,description:scenarioDesc.value});
+    scenarioName.value='';scenarioDesc.value='';await reload();showPage('scenarios');
+  }catch(e){alert(e.message)}
+}
+async function switchScenario(id){
+  if(!confirm('Chuyển sang phương án này? Trạng thái phương án hiện tại sẽ được lưu tự động.'))return;
+  try{await api('/api/scenario/switch',{id});await reload();showPage('scenarios')}catch(e){alert(e.message)}
+}
+async function applyScenario(id){
+  if(!confirm('Áp dụng phương án này thành BẢN CHÍNH?'))return;
+  try{await api('/api/scenario/apply',{id});await reload();showPage('scenarios')}catch(e){alert(e.message)}
+}
+async function deleteScenario(id){
+  if(!confirm('Xóa phương án thử này?'))return;
+  try{await api('/api/scenario/delete',{id});await loadScenarios()}catch(e){alert(e.message)}
+}
+async function undoLast(){
+  if(!confirm('Hoàn tác thao tác gần nhất trong phương án đang mở?'))return;
+  try{const r=await api('/api/undo',{});showToast('Đã hoàn tác: '+r.undone.action);await reload();showPage('scenarios')}catch(e){alert(e.message)}
+}
+async function generateOptimized(){
+  optimizerMessage.innerHTML='<span class="badge blue">Đang sinh 3 phương án...</span>';
+  try{
+    const r=await api('/api/optimizer/generate',{});
+    optimizerMessage.innerHTML='Đã tạo: '+r.rows.map(x=>`<b>${esc(x.name)}</b> (vượt ${x.metrics.over_count} GV, chưa gán ${x.metrics.unassigned}, áp dụng ${x.metrics.optimizer_applied_groups??0} nhóm, bỏ qua ${x.metrics.optimizer_skipped_tkb??0} nhóm do TKB, lỗi TKB ${x.metrics.timetable_errors??0})`).join(' · ');
+    await loadScenarios();
+  }catch(e){optimizerMessage.innerHTML='<span class="badge red">'+esc(e.message)+'</span>'}
+}
+async function setWorkflow(status){
+  try{
+    if(status==='APPROVED'&&!confirm('Duyệt phương án này và KHÓA sửa đổi?'))return;
+    await api('/api/workflow/set',{status,actor:workflowActor.value,note:workflowNote.value});
+    await reload();showPage('scenarios');
+  }catch(e){alert(e.message)}
+}
+
+// ===== Validation =====
+let validationData=null;
+async function runValidation(){
+  validationIssues.innerHTML='<div class="small">Đang kiểm tra...</div>';
+  try{
+    validationData=await api('/api/validation');
+    vkTotal.textContent=validationData.total;vkError.textContent=validationData.counts.error||0;
+    vkWarning.textContent=validationData.counts.warning||0;vkInfo.textContent=validationData.counts.info||0;
+    renderValidationIssues();
+  }catch(e){validationIssues.innerHTML='<span class="badge red">'+esc(e.message)+'</span>'}
+}
+function renderValidationIssues(){
+  if(!validationData)return;
+  const f=validationFilter.value||'';
+  const rows=validationData.issues.filter(x=>!f||x.severity===f);
+  validationIssues.innerHTML=rows.map(x=>`<div class="issue-card ${x.severity}">
+    <div class="issue-title">${x.severity==='error'?'⛔':x.severity==='warning'?'⚠️':'ℹ️'} ${esc(x.title)} ${x.ref?'<span class="badge">'+esc(x.ref)+'</span>':''}</div>
+    <div class="issue-detail">${esc(x.detail)}</div>
+  </div>`).join('')||'<div class="card"><span class="badge green">Không có vấn đề trong nhóm đang chọn.</span></div>';
+}
+
+// ===== Import / backup =====
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const r=new FileReader();r.onload=()=>resolve(String(r.result).split(',')[1]||'');r.onerror=reject;r.readAsDataURL(file);
+  });
+}
+async function previewImport(){
+  const file=importFile.files[0];if(!file){alert('Chọn file .xlsx');return}
+  importPreview.innerHTML='Đang đọc file...';
+  try{
+    const b64=await fileToBase64(file);
+    const r=await api('/api/import/preview',{filename:file.name,data_base64:b64});
+    const p=r.preview;
+    importPreview.innerHTML=`<b>Sheet nhận diện:</b> ${esc(p.sheet||'—')}<br><b>Giáo viên:</b> ${p.teacher_count} · <b>Lớp:</b> ${p.class_count}
+      <hr><div class="small"><b>GV mẫu:</b> ${(p.teachers||[]).slice(0,8).map(x=>esc(x.name)+' ('+esc(x.primary_subject||'')+')').join(', ')||'—'}</div>
+      <div class="small" style="margin-top:5px"><b>Lớp:</b> ${(p.classes||[]).map(esc).join(', ')||'—'}</div>`;
+  }catch(e){importPreview.innerHTML='<span class="badge red">'+esc(e.message)+'</span>'}
+}
+async function applyImport(){
+  if(!confirm('Nhập/cập nhật dữ liệu từ phần xem trước? Hệ thống sẽ lưu lịch sử để có thể hoàn tác.'))return;
+  try{
+    const r=await api('/api/import/apply',{import_teachers:importTeachers.checked,import_classes:importClasses.checked});
+    const x=r.imported;showToast(`Thêm ${x.teachers_added} GV, cập nhật ${x.teachers_updated}, thêm ${x.classes_added} lớp`);await reload();
+  }catch(e){alert(e.message)}
+}
+function downloadBackup(){window.location='/backup.json'}
+async function restoreBackup(){
+  const file=restoreFile.files[0];if(!file){alert('Chọn file sao lưu .json');return}
+  if(!confirm('Phục hồi sẽ thay dữ liệu năm học hiện tại bằng bản sao lưu. Tiếp tục?'))return;
+  try{
+    const txt=await file.text(),payload=JSON.parse(txt);
+    await api('/api/restore_backup',{payload});await reload();showToast('Đã phục hồi bản sao lưu');
+  }catch(e){alert(e.message)}
+}
+
+
+async function saveOperator(){
+  try{await api('/api/settings/operator',{name:operatorName.value});state.settings.operator_name=operatorName.value;showToast('Đã lưu người thao tác')}catch(e){alert(e.message)}
+}
+
+// ===== Timetable =====
+function renderTimetable(){
+  if(!state||!document.getElementById('tkbBody'))return;
+  tkbBody.innerHTML=(state.timetable_entries||[]).map(e=>`<tr>
+    <td>${esc(e.class_name)}</td><td>${esc(e.teacher)}</td><td>${esc(shortSub(e.subject))}</td>
+    <td>${esc(e.session||'')}</td><td>${esc(e.day)}</td><td>${e.period}</td><td>T${e.start_week}-${e.end_week}</td>
+    <td>${esc(e.source||'')}</td><td><button class="danger" onclick="deleteTkbEntry(${e.id})">Xóa</button></td>
+  </tr>`).join('')||'<tr><td colspan="9" class="small">Chưa có dữ liệu TKB.</td></tr>';
+}
+async function previewTimetable(){
+  const file=tkbFile.files[0];if(!file){alert('Chọn file PDF hoặc XLSX');return}
+  tkbPreview.innerHTML='Đang đọc...';
+  try{
+    const b64=await fileToBase64(file);
+    const r=await api('/api/timetable/preview',{filename:file.name,data_base64:b64,start_week:Number(tkbImportStart.value||1),end_week:Number(tkbImportEnd.value||35)});
+    const p=r.preview;
+    if(p.mode==='pdf_teacher_grid'){
+      const unresolved=(p.unresolved_teachers||[]);
+      const mappings=(p.teacher_mapping||[]);
+      tkbPreview.innerHTML=`<b>PDF TKB giáo viên:</b> ${p.page_count} trang · <b>${p.teacher_count}</b> giáo viên · <b>${p.count}</b> ô TKB<br>
+        <b>Áp dụng:</b> ${p.effective_date?esc(p.effective_date)+' · ':''}Tuần ${p.start_week}-${p.end_week}
+        ${unresolved.length?`<div class="issue-card warning" style="margin-top:7px"><b>Chưa khớp tên GV:</b> ${unresolved.map(esc).join(', ')}. Các tên này vẫn được nhập và Trung tâm kiểm tra sẽ cảnh báo để đối chiếu với phân công hiện tại.</div>`:''}
+        <div class="small" style="margin-top:7px"><b>Khớp tên:</b> ${mappings.slice(0,12).map(x=>`${esc(x.pdf_name)} → ${esc(x.resolved_name||'CHƯA XÁC ĐỊNH')}`).join(' · ')}</div>
+        <hr><div class="small">${(p.entries||[]).slice(0,10).map(e=>`${esc(e.class_name)} · ${esc(e.teacher)} · ${esc(shortSub(e.subject))} · ${esc(e.session||'')} ${esc(e.day)} tiết ${e.period}`).join('<br>')}</div>`;
+    }else{
+      tkbPreview.innerHTML=`<b>Excel:</b> ${esc(p.sheet||'—')} · <b>${p.count}</b> dòng nhận diện
+        <hr><div class="small">${(p.entries||[]).slice(0,8).map(e=>`${esc(e.class_name)} · ${esc(e.teacher)} · ${esc(shortSub(e.subject))} · ${esc(e.session||'')} ${esc(e.day)} tiết ${e.period}`).join('<br>')||'Không nhận diện được cấu trúc header Lớp/GV/Môn/Thứ/Tiết.'}</div>`;
+    }
+  }catch(e){tkbPreview.innerHTML='<span class="badge red">'+esc(e.message)+'</span>'}
+}
+async function applyTimetable(){
+  if(!confirm('Nhập dữ liệu TKB từ phần xem trước?'))return;
+  try{
+    const r=await api('/api/timetable/apply',{replace_mode:tkbReplaceMode.value});
+    showToast('Đã nhập '+r.timetable.imported+' dòng TKB');await reload();showPage('timetable');
+  }catch(e){alert(e.message)}
+}
+async function saveTkbEntry(){
+  try{
+    await api('/api/timetable/save',{class_name:tkbClass.value,teacher:tkbTeacher.value,subject:tkbSubject.value,
+      session:tkbSession.value,day:tkbDay.value,period:tkbPeriod.value,start_week:tkbStart.value,end_week:tkbEnd.value});
+    await reload();showPage('timetable');
+  }catch(e){alert(e.message)}
+}
+async function deleteTkbEntry(id){
+  if(!confirm('Xóa dòng TKB này?'))return;
+  try{await api('/api/timetable/delete',{id});await reload();showPage('timetable')}catch(e){alert(e.message)}
+}
+async function previewTkbSync(){
+  if(!document.getElementById('tkbSyncPreview'))return;
+  tkbSyncPreview.innerHTML='Đang đối chiếu...';
+  try{
+    const r=await api('/api/timetable/sync_preview');
+    let unknown=r.unknown_teachers?.length
+      ? `<div class="issue-card warning"><b>Tên/vị trí chưa có trong đội ngũ:</b> ${r.unknown_teachers.map(esc).join(', ')}</div>`:'';
+    tkbSyncPreview.innerHTML=`<b>${r.mismatch_rows}</b> dòng lệch phân công · <b>${r.safe_rows}</b> dòng có thể đồng bộ an toàn · <b>${r.unsafe_rows}</b> dòng sẽ giữ nguyên vì có nguy cơ trùng TKB.<br>`+
+      unknown+
+      r.rows.slice(0,30).map(x=>`<div class="impact-block"><b>${esc(x.class_name)} · ${esc(shortSub(x.subject))}</b>: ${x.current_teachers.map(esc).join(', ')} → <b>${esc(x.target_teacher)}</b> · ${x.row_count} dòng
+        ${x.safe?'<span class="badge green">An toàn</span>':`<span class="badge red">${x.conflict_count} xung đột — không tự đồng bộ</span>`}
+        ${!x.safe?'<div class="small">'+x.conflicts.slice(0,4).map(c=>`${esc(c.session||'')} ${esc(c.day)} tiết ${c.period}: ${esc(c.other_class)} ${esc(shortSub(c.other_subject))}`).join('<br>')+'</div>':''}
+      </div>`).join('');
+  }catch(e){tkbSyncPreview.innerHTML='<span class="badge red">'+esc(e.message)+'</span>'}
+}
+async function applyTkbSync(){
+  if(!confirm('Đồng bộ tên giáo viên trong TKB theo PHÂN CÔNG CHUYÊN MÔN? Thao tác được ghi lịch sử và có thể hoàn tác.'))return;
+  try{
+    const r=await api('/api/timetable/sync',{});
+    showToast('Đã đồng bộ '+r.sync.changed+' dòng; giữ nguyên '+r.sync.skipped+' dòng có nguy cơ trùng giờ');
+    await reload();showPage('timetable');await previewTkbSync();await validateTimetable();
+  }catch(e){alert(e.message)}
+}
+
+async function validateTimetable(){
+  if(!document.getElementById('tkbValidation'))return;
+  tkbValidation.innerHTML='Đang kiểm tra...';
+  try{
+    const v=await api('/api/timetable/validation');
+    tkbValidation.innerHTML=`<b>${v.total}</b> vấn đề · lỗi ${v.counts.error||0} · cảnh báo ${v.counts.warning||0}<br>`+
+      v.issues.slice(0,30).map(x=>`<div class="issue-card ${x.severity}" style="margin-top:5px">${esc(x.detail)}</div>`).join('');
+  }catch(e){tkbValidation.innerHTML='<span class="badge red">'+esc(e.message)+'</span>'}
+}
+
+// ===== Staff events =====
+function renderStaffEvents(){
+  if(!state||!document.getElementById('eventBody'))return;
+  eventBody.innerHTML=(state.staff_events||[]).map(e=>`<tr>
+    <td><b>${esc(e.teacher)}</b></td><td>${esc(e.event_type)}</td><td>T${e.start_week}-${e.end_week}</td>
+    <td>${e.blocks_teaching?'<span class="badge red">Có</span>':'<span class="badge">Không</span>'}</td>
+    <td>${esc(e.replacement_teacher||'—')}</td><td>${esc(e.note||'')}</td>
+    <td><button onclick="suggestEventReplacement(${e.id})">★ Gợi ý thay</button> <button onclick='editStaffEvent(${JSON.stringify(e).replace(/'/g,"&#39;")})'>Sửa</button> <button class="danger" onclick="deleteStaffEvent(${e.id})">Xóa</button></td>
+  </tr>`).join('')||'<tr><td colspan="7" class="small">Chưa có biến động nhân sự.</td></tr>';
+}
+async function suggestEventReplacement(id){
+  eventSuggestions.style.display='block';eventSuggestions.innerHTML='Đang phân tích các lớp bị ảnh hưởng...';
+  try{
+    const r=await api('/api/staff_event/recommend?id='+id);
+    eventSuggestions.innerHTML=`<h3>Gợi ý thay cho ${esc(r.event.teacher)} · ${esc(r.event.event_type)} T${r.event.start_week}-${r.event.end_week}</h3>
+      <div class="small">Ảnh hưởng ${r.impacted_count} nhu cầu phân công.</div>`+
+      r.rows.map(x=>`<div class="impact-block"><b>${esc(x.class_name)} · ${esc(shortSub(x.subject))}</b><br>`+
+        (x.recommendations.length?x.recommendations.map(a=>`${esc(a.teacher)} — max ${nfmt(a.max_after.total)}/${nfmt(a.max_after.standard)}${a.timetable_conflicts?' · '+a.timetable_conflicts+' trùng TKB':''}`).join('<br>'):'Chưa có ứng viên phù hợp')+
+      `</div>`).join('');
+  }catch(e){eventSuggestions.innerHTML='<span class="badge red">'+esc(e.message)+'</span>'}
+}
+function clearStaffEvent(){
+  evId.value='';evTeacher.value='';evType.value='Nghỉ thai sản';evBlock.value='1';evStart.value=1;evEnd.value=35;evReplacement.value='';evNote.value='';
+}
+function editStaffEvent(e){
+  evId.value=e.id;evTeacher.value=e.teacher;evType.value=e.event_type;evBlock.value=e.blocks_teaching?1:0;
+  evStart.value=e.start_week;evEnd.value=e.end_week;evReplacement.value=e.replacement_teacher||'';evNote.value=e.note||'';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+async function saveStaffEvent(){
+  try{
+    await api('/api/staff_event/save',{id:evId.value||null,teacher:evTeacher.value,event_type:evType.value,
+      blocks_teaching:Number(evBlock.value),start_week:evStart.value,end_week:evEnd.value,
+      replacement_teacher:evReplacement.value,note:evNote.value});
+    clearStaffEvent();await reload();showPage('events');
+  }catch(e){alert(e.message)}
+}
+async function deleteStaffEvent(id){
+  if(!confirm('Xóa biến động nhân sự này?'))return;
+  try{await api('/api/staff_event/delete',{id});await reload();showPage('events')}catch(e){alert(e.message)}
+}
+
+// ===== Assistant / reports =====
+async function askAssistant(){
+  assistantAnswer.textContent='Đang phân tích...';
+  try{
+    const r=await api('/api/assistant',{text:assistantInput.value,week:Number(weekInput.value||1)});
+    assistantAnswer.textContent=r.answer||'';
+    if((r.actions||[]).some(a=>a.type==='open_page'&&a.page))setTimeout(()=>showPage(r.actions[0].page),800);
+  }catch(e){assistantAnswer.textContent=e.message}
+}
+function exportRangeQuery(){
+  const scope=exportScope.value||'all';let q='scope='+encodeURIComponent(scope);
+  if(scope==='custom')q+='&start='+encodeURIComponent(exportStart.value||1)+'&end='+encodeURIComponent(exportEnd.value||35);
+  return q;
+}
+function exportReferenceWeek(){
+  const weeks=Number(state?.settings?.weeks||35),s1=Number(state?.settings?.semester1_weeks||18),scope=exportScope.value||'all';
+  if(scope==='hk1')return 1;
+  if(scope==='hk2')return Math.min(s1+1,weeks);
+  if(scope==='custom')return Math.max(1,Math.min(weeks,Number(exportStart.value||1)));
+  return Number(weekInput.value||1);
+}
+function toggleExportRange(){
+  const on=exportScope.value==='custom';exportStart.style.display=on?'inline-block':'none';exportEnd.style.display=on?'inline-block':'none';
+  exportScope.title=(exportScope.value==='hk2'?`Xuất HKII dùng tuần tham chiếu T${exportReferenceWeek()}`:exportScope.value==='hk1'?`Xuất HKI dùng tuần tham chiếu T1`:'');
+}
+function downloadReportWord(){window.location='/report.docx?week='+encodeURIComponent(exportReferenceWeek())+'&'+exportRangeQuery()}
+function openPrintReport(){window.open('/report.html?week='+encodeURIComponent(exportReferenceWeek())+'&'+exportRangeQuery(),'_blank')}
+async function rolloverYear(){
+  const name=newYearName.value.trim();if(!name){alert('Nhập năm học mới.');return}
+  if(!confirm(`Chuyển thông minh sang ${name}? Khối 10→11, 11→12; khối 12 cũ ra trường; tạo ${rollGrade10.value} lớp 10 mới.`))return;
+  try{
+    await api('/api/year/rollover',{name,grade10_count:Number(rollGrade10.value||5)});
+    await reload();showPage('year');showToast('Đã chuyển năm học thông minh');
+  }catch(e){alert(e.message)}
+}
+
+
+// ===== Staff =====
+function staffTeachingClasses(teacherName,week=null){
+  const label={'Toán học':'Toán','Ngữ văn':'Văn','Vật lý':'Lý','Hóa học':'Hóa','Sinh học':'Sinh','Tin học':'Tin','Lịch sử':'Sử','Địa lí':'Địa','GDKTPL':'KTPL','TNHN':'HĐTN','GD địa phương':'GDĐP','Ngoại ngữ':'Ngoại ngữ'};
+  const w=week==null?null:Number(week);
+  const rows=state.requirements.filter(r=>r.teacher===teacherName && (w==null || (Number(r.start_week||1)<=w && Number(r.end_week||35)>=w)));
+  const map=new Map();
+  rows.forEach(r=>{
+    const key=r.class_name+'|'+r.subject;
+    if(!map.has(key))map.set(key,{class_name:r.class_name,subject:r.subject,hasCd:false});
+    if(r.req_type==='Chuyên đề')map.get(key).hasCd=true;
+  });
+  return [...map.values()]
+    .sort((a,b)=>a.class_name.localeCompare(b.class_name,'vi')||a.subject.localeCompare(b.subject,'vi'))
+    .map(x=>`${x.class_name}${x.hasCd?' CĐ':''} (${label[x.subject]||x.subject})`)
+    .join(', ');
+}
+function dutiesAtWeek(teacherName,week){
+  week=Number(week||1);
+  return (state.duties||[]).filter(d=>d.teacher===teacherName&&Number(d.start_week)<=week&&Number(d.end_week)>=week);
+}
+function dutySummaryHtml(teacherName,week){
+  const ds=dutiesAtWeek(teacherName,week);
+  if(!ds.length)return '—';
+  return `<div class="duty-current">`+ds.map(d=>{
+    const label=d.duty_type==='Chủ nhiệm'?'CN '+d.class_name:d.duty_name;
+    const std=d.standard_override?` · chuẩn ${nfmt(d.standard_override)}`:'';
+    return `<span class="duty-chip ${d.duty_type==='Chủ nhiệm'?'cn':'kn'}">${esc(label)}: +${nfmt(d.credit)}${std}</span>`;
+  }).join('')+`</div>`;
+}
+function shortWorkloadNote(full){
+  if(!full)return '';
+  return full
+    .replace(/Tuần /g,'T')
+    .replace(/ thiếu /g,': -')
+    .replace(/ dư /g,': +')
+    .replace(/ đủ chuẩn/g,': 0')
+    .replace(/ tiết/g,'');
+}
+function renderStaff(){
+  if(!state)return;
+  if(document.getElementById('staffWeekLabel'))staffWeekLabel.textContent=weekInput.value||1;
+  const q=(document.getElementById('staffSearch')?.value||'').trim().toLowerCase();
+  const sf=document.getElementById('staffSubjectFilter')?.value||'';
+  const viewWeek=Number(weekInput.value||1);
+  staffBody.innerHTML=state.teachers.filter(t=>{
+    const classes=staffTeachingClasses(t.name,viewWeek);
+    const dutyText=(state.duties||[]).filter(d=>d.teacher===t.name).map(d=>d.duty_name+' '+d.class_name).join(' ');
+    const hay=(t.name+' '+t.primary_subject+' '+(t.can_teach_list||[]).join(' ')+' '+classes+' '+dutyText).toLowerCase();
+    return (!q||hay.includes(q)) && (!sf||t.primary_subject===sf||(t.can_teach_list||[]).includes(sf));
+  }).map(t=>{
+    let L=state.loads[t.name]?.current||{total:0,standard:Number(t.standard||0),diff:0};
+    let M=state.loads[t.name]?.max||{total:0,standard:Number(t.standard||0),diff:0,week:1};
+    let diff=Number(L.diff??(Number(L.total||0)-Number(L.standard||t.standard||0)));
+    let maxDiff=Number(M.diff??(Number(M.total||0)-Number(M.standard||t.standard||0)));
+    let fullNote=state.workload_notes?.[t.name]||'';
+    let classes=staffTeachingClasses(t.name,viewWeek)||'—';
+    const diffHtml=diff>0?`<span class="badge red">+${nfmt(diff)}</span>`:diff<0?`<span class="badge yellow">${nfmt(diff)}</span>`:`<span class="badge green">0</span>`;
+    const maxClass=maxDiff>0?'over':'ok';
+    const maxText=`${nfmt(M.total)}/${nfmt(M.standard)} · T${M.week||1}${maxDiff>0?' · +'+nfmt(maxDiff):maxDiff<0?' · '+nfmt(maxDiff):''}`;
+    return `<tr>
+      <td class="staff-name"><b>${esc(t.name)}</b>${L.unavailable?`<div class="mini-line"><span class="badge red">Không khả dụng T${viewWeek}</span> ${(L.staff_events||[]).map(e=>esc(e.event_type)).join(', ')}</div>`:''}</td>
+      <td>${esc(t.primary_subject||'')}</td>
+      <td>${(t.can_teach_list||[]).map(s=>`<span class="badge blue">${esc(shortSub(s))}</span>`).join(' ')}</td>
+      <td class="classes-cell">${esc(classes)}</td>
+      <td><b>${nfmt(L.standard)}</b>${Number(L.standard)!==Number(t.standard)?`<div class="mini-line">gốc ${nfmt(t.standard)}</div>`:''}</td>
+      <td><b>${nfmt(L.total)}</b></td>
+      <td>${diffHtml}</td>
+      <td><div class="max-load ${maxClass}">${maxText}</div></td>
+      <td class="credit-cell">${dutySummaryHtml(t.name,viewWeek)}</td>
+      <td class="change-cell" title="${esc(fullNote)}"><div class="change-short">${esc(shortWorkloadNote(fullNote))}</div></td>
+      <td>${esc(t.employment_type)}</td>
+      <td>${t.active_start}-${t.active_end}</td>
+      <td>${t.active?'<span class="badge green">Hoạt động</span>':'<span class="badge">Ngừng</span>'}</td>
+      <td><button onclick="openDutyModal('${jsq(t.name)}')">CN/KN</button> <button onclick='editTeacher(${JSON.stringify(t).replace(/'/g,"&#39;")})'>Sửa</button> <button onclick="toggleTeacher(${t.id})">${t.active?'Ngừng':'Bật'}</button></td>
+    </tr>`;
+  }).join('');
+}
+function editTeacher(t){
+  showPage('staff');
+  document.getElementById('staffFormDetails').open=true;
+  tId.value=t.id;tStt.value=t.stt||'';tName.value=t.name;tPrimary.value=t.primary_subject||'';
+  tCan.value=(t.can_teach_list||[]).join(', ');tStandard.value=t.standard;tType.value=t.employment_type;
+  tStart.value=t.active_start;tEnd.value=t.active_end;tNote.value=t.note||'';
+  document.getElementById('staffFormDetails').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function clearTeacher(){
+  ['tId','tStt','tName','tCan','tNote'].forEach(id=>document.getElementById(id).value='');
+  tPrimary.value='';tStandard.value=17;tType.value='Cơ hữu';tStart.value=1;tEnd.value=35;
+}
+
+async function saveTeacher(){try{await api('/api/teacher/save',{id:tId.value||null,stt:tStt.value,name:tName.value,primary_subject:tPrimary.value,can_teach:tCan.value,standard:tStandard.value,employment_type:tType.value,active_start:tStart.value,active_end:tEnd.value,role:'',role_credit:0,homeroom:'',homeroom_credit:0,note:tNote.value,active:1});clearTeacher();await reload()}catch(e){alert(e.message)}}
+async function toggleTeacher(id){await api('/api/teacher/toggle',{id});await reload()}
+
+// ===== Duties / CN-KN =====
+function teacherDuties(name){
+  return (state.duties||[]).filter(d=>d.teacher===name).sort((a,b)=>Number(a.start_week)-Number(b.start_week)||Number(a.end_week)-Number(b.end_week));
+}
+function openDutyModal(teacherName){
+  dutyTeacher.value=teacherName;dutyTeacherName.value=teacherName;dutyModalTitle.textContent='Lịch sử CN/KN · '+teacherName;
+  dutyClass.innerHTML='<option value=""></option>'+state.classes.filter(c=>c.active).map(c=>`<option>${esc(c.class_name)}</option>`).join('');
+  clearDutyForm();renderDutyHistory();dutyModal.classList.add('show');
+}
+function closeDutyModal(){dutyModal.classList.remove('show')}
+function dutyTypeChanged(){
+  const isCN=dutyType.value==='Chủ nhiệm';
+  dutyNameField.style.display=isCN?'none':'block';
+  dutyClassField.style.display=isCN?'block':'none';
+  dutyStandardField.style.display=isCN?'none':'block';
+}
+function clearDutyForm(){
+  dutyId.value='';dutyType.value='Kiêm nhiệm';dutyName.value='';dutyClass.value='';
+  dutyCredit.value=0;dutyStandardOverride.value='';dutyStart.value=1;dutyEnd.value=state?.settings?.weeks||35;dutyNote.value='';
+  dutyTypeChanged();
+}
+function renderDutyHistory(){
+  const rows=teacherDuties(dutyTeacher.value);
+  dutyHistoryBody.innerHTML=rows.map(d=>`<tr>
+    <td>${esc(d.duty_type)}</td>
+    <td><b>${esc(d.duty_type==='Chủ nhiệm'?'CN '+d.class_name:d.duty_name)}</b></td>
+    <td>+${nfmt(d.credit)}</td>
+    <td>${d.standard_override? nfmt(d.standard_override):'—'}</td>
+    <td>${d.start_week}</td><td>${d.end_week}</td>
+    <td>${esc(d.note||'')}</td>
+    <td><button onclick='editDuty(${JSON.stringify(d).replace(/'/g,"&#39;")})'>Sửa</button> <button class="danger" onclick="deleteDuty(${d.id})">Xóa</button></td>
+  </tr>`).join('')||'<tr><td colspan="8" class="small">Chưa có nhiệm vụ CN/KN.</td></tr>';
+}
+function editDuty(d){
+  dutyId.value=d.id;dutyType.value=d.duty_type;dutyName.value=d.duty_name||'';dutyClass.value=d.class_name||'';
+  dutyCredit.value=d.credit;dutyStandardOverride.value=d.standard_override??'';dutyStart.value=d.start_week;dutyEnd.value=d.end_week;dutyNote.value=d.note||'';
+  dutyTypeChanged();
+}
+async function saveDuty(allowOverlap){
+  const data={
+    id:dutyId.value||null,teacher:dutyTeacher.value,duty_type:dutyType.value,
+    duty_name:dutyName.value,class_name:dutyClass.value,credit:dutyCredit.value,
+    standard_override:dutyStandardOverride.value||null,
+    start_week:dutyStart.value,end_week:dutyEnd.value,note:dutyNote.value,
+    allow_overlap:!!allowOverlap
+  };
+  try{
+    await api('/api/duty/save',data);
+    await reload();
+    dutyTeacher.value=data.teacher;dutyTeacherName.value=data.teacher;
+    clearDutyForm();renderDutyHistory();showToast('Đã lưu CN/KN');
+  }catch(e){
+    if(String(e.message).startsWith('OVERLAP|')&&!allowOverlap){
+      const detail=e.message.substring('OVERLAP|'.length);
+      if(confirm('Khoảng tuần này đang chồng với nhiệm vụ khác:\n\n'+detail+'\n\nNếu tiếp tục, phần mềm sẽ CỘNG đồng thời các tiết quy đổi. Vẫn lưu?')){
+        await saveDuty(true);
+      }
+    }else alert(e.message);
+  }
+}
+async function deleteDuty(id){
+  if(!confirm('Xóa giai đoạn CN/KN này?'))return;
+  await api('/api/duty/delete',{id});
+  const teacher=dutyTeacher.value;
+  await reload();dutyTeacher.value=teacher;dutyTeacherName.value=teacher;renderDutyHistory();showToast('Đã xóa CN/KN');
+}
+
+
+// ===== Templates =====
+function renderTemplateSubjectEditor(selectedItems=null){
+  if(!state)return;
+  const map={};
+  (selectedItems||[]).forEach(x=>map[x.subject]=x);
+  templateSubjectEditor.innerHTML=
+    `<div class="head">Môn</div><div class="head">Cốt lõi</div><div class="head">Chuyên đề</div>`+
+    state.program_rules.map(r=>{
+      const it=map[r.subject]||{};
+      return `<div><b>${esc(shortSub(r.subject))}</b><div class="small">${esc(r.subject)}</div></div>
+        <div style="text-align:center"><input class="tp-core" data-subject="${esc(r.subject)}" type="checkbox" ${it.core?'checked':''}></div>
+        <div style="text-align:center"><input class="tp-cd" data-subject="${esc(r.subject)}" type="checkbox" ${it.specialty?'checked':''} ${!r.can_specialty?'disabled':''}></div>`;
+    }).join('');
+}
+function collectTemplateItems(){
+  return state.program_rules.map(r=>({
+    subject:r.subject,
+    core:document.querySelector(`.tp-core[data-subject="${CSS.escape(r.subject)}"]`)?.checked?1:0,
+    specialty:document.querySelector(`.tp-cd[data-subject="${CSS.escape(r.subject)}"]`)?.checked?1:0
+  })).filter(x=>x.core||x.specialty);
+}
+function renderTemplates(){
+  if(!state)return;
+  templateList.innerHTML=state.templates.map(tp=>{
+    const core=tp.items.filter(x=>x.core),cd=tp.items.filter(x=>x.specialty);
+    return `<div class="template-card">
+      <h3>${esc(tp.name)} <span class="badge blue">Khối ${tp.grade}</span> ${!tp.active?'<span class="badge">Ngừng</span>':''}</h3>
+      <div class="small">${tp.class_count} lớp đang dùng</div>
+      <div class="pills">${core.map(x=>`<span class="pill">${esc(shortSub(x.subject))}${x.specialty?' <b>+CĐ</b>':''}</span>`).join('')}</div>
+      <div class="manage-class-actions">
+        <button onclick="editTemplate(${tp.id})">Sửa</button>
+        <button onclick="copyTemplate(${tp.id})">Sao chép</button>
+        <button onclick="toggleTemplate(${tp.id})">${tp.active?'Ngừng':'Bật'}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function editTemplate(id){
+  const tp=state.templates.find(x=>x.id===id);if(!tp)return;
+  showPage('templates');tpId.value=tp.id;tpName.value=tp.name;tpGrade.value=tp.grade;tpNote.value=tp.note||'';tpUpdateClasses.checked=false;
+  tpFormTitle.textContent='Sửa '+tp.name;renderTemplateSubjectEditor(tp.items);
+}
+function clearTemplate(){tpId.value='';tpName.value='';tpGrade.value=10;tpNote.value='';tpUpdateClasses.checked=false;tpFormTitle.textContent='Thêm tổ hợp';renderTemplateSubjectEditor([])}
+async function saveTemplate(){
+  try{
+    const update=tpUpdateClasses.checked;
+    if(update && !confirm('Cập nhật tổ hợp sẽ đồng bộ lại cấu trúc môn của tất cả lớp đang dùng tổ hợp này. Môn bị bỏ khỏi tổ hợp sẽ bị xóa khỏi lớp. Tiếp tục?'))return;
+    await api('/api/template/save',{id:tpId.value||null,name:tpName.value,grade:tpGrade.value,note:tpNote.value,active:1,items:collectTemplateItems(),update_classes:update});
+    clearTemplate();await reload()
+  }catch(e){alert(e.message)}
+}
+async function toggleTemplate(id){await api('/api/template/toggle',{id});await reload()}
+async function copyTemplate(id){let r=await api('/api/template/copy',{id});await reload();showToast('Đã tạo '+r.name)}
+
+// ===== Classes =====
+function refreshClassTemplateOptions(){
+  if(!state)return;
+  const grade=Number(cGrade.value||10),old=cTemplate.value;
+  const arr=state.templates.filter(t=>t.active&&Number(t.grade)===grade);
+  cTemplate.innerHTML='<option value="">-- Chọn tổ hợp --</option>'+arr.map(t=>`<option>${esc(t.name)}</option>`).join('');
+  if(arr.some(x=>x.name===old))cTemplate.value=old;
+  previewClassTemplate();
+}
+function previewClassTemplate(){
+  if(!state)return;
+  const tp=state.templates.find(t=>t.name===cTemplate.value);
+  if(!tp){classTemplatePreview.innerHTML='Chọn tổ hợp để xem trước cấu trúc môn.';return}
+  const core=tp.items.filter(x=>x.core);
+  classTemplatePreview.innerHTML=`<b>${esc(tp.name)}:</b> `+core.map(x=>`<span class="pill ${x.specialty?'cd':''}">${esc(shortSub(x.subject))}${x.specialty?' · CĐ':''}</span>`).join(' ');
+}
+function renderClassesManage(){
+  if(!state)return;
+  classManageGrid.innerHTML=state.classes.map(c=>{
+    const pills=(c.structure||[]).filter(x=>x.core).map(x=>`<span class="pill ${x.specialty?'cd':''}">${esc(shortSub(x.subject))}${x.specialty?' · CĐ':''}</span>`).join('');
+    return `<div class="manage-class-card">
+      <div class="manage-class-head">
+        <div class="big">${esc(c.class_name)}</div>
+        <div><div class="meta">Khối ${c.grade} · <b>${esc(c.template_name||'Chưa có tổ hợp')}</b> ${c.customized?'<span class="badge yellow">Điều chỉnh riêng</span>':''}</div>
+        <div class="meta">${c.homeroom_teacher?'GVCN: '+esc(c.homeroom_teacher):'Chưa có GVCN'}</div></div>
+      </div>
+      <div class="pills">${pills}</div>
+      <div class="manage-class-actions">
+        <button onclick='editClass(${JSON.stringify(c).replace(/'/g,"&#39;")})'>Sửa lớp</button>
+        <button onclick="openStructureModal('${jsq(c.class_name)}')">Sửa cấu trúc</button>
+        ${c.customized&&c.template_name?`<button onclick="restoreClassNow('${jsq(c.class_name)}')">Theo lại tổ hợp</button>`:''}
+        <button onclick="toggleClass(${c.id})">${c.active?'Ngừng':'Bật'}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function editClass(c){
+  showPage('classes');cId.value=c.id;cName.value=c.class_name;cGrade.value=c.grade;refreshClassTemplateOptions();cTemplate.value=c.template_name||'';cHomeroom.value=c.homeroom_teacher||'';previewClassTemplate()
+}
+function clearClass(){cId.value='';cName.value='';cGrade.value=10;refreshClassTemplateOptions();cHomeroom.value='';previewClassTemplate()}
+async function saveClass(){
+  try{
+    if(!cTemplate.value){alert('Hãy chọn tổ hợp cho lớp.');return}
+    const old=cId.value?state.classes.find(x=>String(x.id)===String(cId.value)):null;
+    if(old && old.template_name!==cTemplate.value){
+      if(!confirm(`Đổi ${old.class_name} từ "${old.template_name}" sang "${cTemplate.value}" sẽ cập nhật cấu trúc môn theo tổ hợp mới. Tiếp tục?`))return;
+    }
+    await api('/api/class/save',{id:cId.value||null,class_name:cName.value,grade:cGrade.value,template_name:cTemplate.value,homeroom_teacher:cHomeroom.value,active:1});
+    clearClass();await reload()
+  }catch(e){alert(e.message)}
+}
+async function toggleClass(id){await api('/api/class/toggle',{id});await reload()}
+function openStructureModal(className){
+  editingStructureClass=className;
+  const c=state.classes.find(x=>x.class_name===className);if(!c)return;
+  structureTitle.textContent=`Sửa cấu trúc ${className}`;
+  const map={};(c.structure||[]).forEach(x=>map[x.subject]=x);
+  classStructureEditor.innerHTML=
+    `<div class="head">Môn</div><div class="head">Cốt lõi</div><div class="head">Chuyên đề</div>`+
+    state.program_rules.map(r=>{const it=map[r.subject]||{};return `<div><b>${esc(shortSub(r.subject))}</b><div class="small">${esc(r.subject)}</div></div>
+    <div style="text-align:center"><input class="cs-core" data-subject="${esc(r.subject)}" type="checkbox" ${it.core?'checked':''}></div>
+    <div style="text-align:center"><input class="cs-cd" data-subject="${esc(r.subject)}" type="checkbox" ${it.specialty?'checked':''} ${!r.can_specialty?'disabled':''}></div>`}).join('');
+  restoreTemplateBtn.style.display=c.template_name?'inline-block':'none';
+  structureModal.classList.add('show')
+}
+function closeStructureModal(){structureModal.classList.remove('show');editingStructureClass=''}
+function collectClassStructure(){
+  return state.program_rules.map(r=>({subject:r.subject,
+    core:document.querySelector(`.cs-core[data-subject="${CSS.escape(r.subject)}"]`)?.checked?1:0,
+    specialty:document.querySelector(`.cs-cd[data-subject="${CSS.escape(r.subject)}"]`)?.checked?1:0
+  })).filter(x=>x.core||x.specialty)
+}
+async function saveClassStructure(){
+  if(!editingStructureClass)return;
+  if(!confirm('Lưu cấu trúc riêng cho lớp này? Các môn bỏ chọn sẽ bị xóa khỏi lớp và mất phân công của môn đó.'))return;
+  await api('/api/class/structure',{class_name:editingStructureClass,items:collectClassStructure()});closeStructureModal();await reload()
+}
+async function restoreTemplate(){
+  if(!editingStructureClass)return;
+  if(!confirm('Khôi phục cấu trúc đúng theo tổ hợp của lớp? Các điều chỉnh riêng sẽ bị bỏ.'))return;
+  await api('/api/class/restore_template',{class_name:editingStructureClass});closeStructureModal();await reload()
+}
+async function restoreClassNow(className){
+  if(!confirm(`Khôi phục ${className} theo tổ hợp gốc?`))return;
+  await api('/api/class/restore_template',{class_name:className});await reload()
+}
+
+// ===== Program =====
+let programEditMode='schedule';
+
+function renderProgram(){
+  if(!state)return;
+  programSourceTitle.textContent=state.settings.program_source_title||'Chương trình GDTX cấp THPT';
+  programSourceText.textContent=state.settings.program_source||'';
+  programWeeksText.textContent=`${state.settings.weeks} tuần thực học (HKI ${state.settings.semester1_weeks} + HKII ${state.settings.semester2_weeks})`;
+
+  programBody.innerHTML=state.program_rules.map(r=>`<tr>
+    <td><b>${esc(r.subject)}</b></td>
+    <td><b>${nfmt(r.base_hours)}</b></td>
+    <td>${r.can_specialty?nfmt(r.specialty_hours):'—'}</td>
+    <td><b>${nfmt(r.total_with_specialty)}</b></td>
+    <td><div class="schedule-summary">${esc(r.core_schedule_summary)}</div></td>
+    <td><div class="schedule-summary">${esc(r.specialty_schedule_summary)}</div></td>
+    <td>${r.can_specialty?'<span class="badge green">Có</span>':'<span class="badge">Không</span>'}</td>
+    <td><div class="program-actions">
+      <button onclick="openProgramEditor(${r.id},'schedule')">Phân bổ</button>
+      <button onclick="openProgramEditor(${r.id},'legal')">Điều chỉnh khung</button>
+    </div></td>
+  </tr>`).join('');
+}
+
+function programRuleById(id){return state.program_rules.find(r=>Number(r.id)===Number(id))}
+function renderProgramSegments(kind,segments){
+  const box=kind==='core'?coreSegments:specialtySegments;
+  box.innerHTML=(segments||[]).map((s,i)=>programSegmentRow(kind,s,i)).join('');
+  updateProgramSegmentTotals();
+}
+function programSegmentRow(kind,s,i){
+  return `<div class="segment-row" data-kind="${kind}">
+    <input class="seg-start" type="number" min="1" max="${state.settings.weeks}" value="${s.start}">
+    <input class="seg-end" type="number" min="1" max="${state.settings.weeks}" value="${s.end}">
+    <input class="seg-periods" type="number" min="0" step="0.5" value="${s.periods}" oninput="updateProgramSegmentTotals()">
+    <button class="danger" type="button" onclick="removeProgramSegment('${kind}',${i})">Xóa</button>
+  </div>`;
+}
+function collectProgramSegments(kind){
+  const box=kind==='core'?coreSegments:specialtySegments;
+  return [...box.querySelectorAll('.segment-row')].map(row=>({
+    start:Number(row.querySelector('.seg-start').value||0),
+    end:Number(row.querySelector('.seg-end').value||0),
+    periods:Number(row.querySelector('.seg-periods').value||0)
+  })).filter(x=>x.periods>0);
+}
+function addProgramSegment(kind){
+  const segs=collectProgramSegments(kind);
+  let start=1;
+  if(segs.length)start=Math.min(state.settings.weeks,segs[segs.length-1].end+1);
+  segs.push({start,end:state.settings.weeks,periods:1});
+  renderProgramSegments(kind,segs);
+}
+function removeProgramSegment(kind,index){
+  const segs=collectProgramSegments(kind);
+  segs.splice(index,1);
+  renderProgramSegments(kind,segs);
+}
+function scheduleTotal(segs){
+  return (segs||[]).reduce((sum,s)=>sum+Math.max(0,s.end-s.start+1)*Number(s.periods||0),0);
+}
+function updateProgramSegmentTotals(){
+  if(!state||!document.getElementById('prBaseHours'))return;
+  const core=collectProgramSegments('core'),cd=collectProgramSegments('specialty');
+  const ct=scheduleTotal(core),st=scheduleTotal(cd);
+  const base=Number(prBaseHours.value||0),spec=Number(prSpecialtyHours.value||0);
+  coreSegmentTotal.textContent=`Tổng phân bổ: ${nfmt(ct)} / ${nfmt(base)} tiết`;
+  coreSegmentTotal.className='segment-total '+(Math.abs(ct-base)<1e-6?'ok':'bad');
+  specialtySegmentTotal.textContent=`Tổng phân bổ: ${nfmt(st)} / ${nfmt(spec)} tiết`;
+  specialtySegmentTotal.className='segment-total '+(Math.abs(st-spec)<1e-6?'ok':'bad');
+}
+function openProgramEditor(id,mode){
+  const r=programRuleById(id);if(!r)return;
+  programEditMode=mode;prId.value=r.id;prSubject.value=r.subject;prBaseHours.value=r.base_hours;
+  prSpecialtyHours.value=r.specialty_hours;prCanSpecialty.value=r.can_specialty?1:0;prSource.value=r.source||'';
+  const legal=mode==='legal';
+  programModalTitle.textContent=legal?`Điều chỉnh khung pháp lý · ${r.subject}`:`Phân bổ thực dạy · ${r.subject}`;
+  programLockNote.innerHTML=legal
+    ? '⚠ Anh đang chỉnh dữ liệu khung chương trình. Số tiết/năm và tổng phân bổ tuần phải khớp nhau trước khi lưu.'
+    : 'Chỉ thay đổi cách phân bổ các tiết trong 35 tuần; tổng tiết/năm của khung pháp lý được giữ nguyên.';
+  prBaseHours.disabled=!legal;prSpecialtyHours.disabled=!legal;prCanSpecialty.disabled=!legal;prSource.disabled=!legal;
+  renderProgramSegments('core',r.core_schedule||[]);
+  renderProgramSegments('specialty',r.specialty_schedule||[]);
+  specialtySegmentSection.style.display=r.can_specialty?'block':'none';
+  prCanSpecialty.onchange=()=>{specialtySegmentSection.style.display=Number(prCanSpecialty.value)?'block':'none';updateProgramSegmentTotals()};
+  prBaseHours.oninput=updateProgramSegmentTotals;prSpecialtyHours.oninput=updateProgramSegmentTotals;
+  programModal.classList.add('show');
+}
+function closeProgramModal(){programModal.classList.remove('show')}
+async function saveProgram(){
+  try{
+    const can=Number(prCanSpecialty.value||0);
+    const core=collectProgramSegments('core');
+    const cd=can?collectProgramSegments('specialty'):[];
+    await api('/api/program/save',{
+      id:prId.value,
+      base_hours:prBaseHours.value,
+      specialty_hours:can?prSpecialtyHours.value:0,
+      can_specialty:can,
+      source:prSource.value,
+      core_schedule:core,
+      specialty_schedule:cd,
+      legal_locked:1
+    });
+    closeProgramModal();await reload();showToast('Đã lưu chương trình & phân bổ thực dạy');
+  }catch(e){alert(e.message)}
+}
+
+// ===== Staffing =====
+function renderStaffing(){
+  let s=state.staffing;kClasses.textContent=s.class_count;kLegal.textContent=nfmt(s.legal_teacher_equiv);kTeachers.textContent=s.active_teacher_count;
+  let gap=s.active_teacher_count-s.legal_teacher_equiv;kGap.textContent=(gap>=0?'+':'')+nfmt(gap);kGap.style.color=gap>=0?'#107c41':'#b42318';
+  staffingBody.innerHTML=Object.entries(s.by_subject).sort((a,b)=>a[0].localeCompare(b[0],'vi')).map(([sub,d])=>{let note=d.teachers===0?'<span class="badge red">Chưa có GV</span>':d.teachers<Math.ceil(d.fte17)?'<span class="badge yellow">Có nguy cơ thiếu</span>':'<span class="badge green">Có thể bố trí</span>';return `<tr><td><b>${esc(sub)}</b></td><td>${nfmt(d.annual_hours)}</td><td>${nfmt(d.weekly_need)}</td><td>${nfmt(d.fte17)}</td><td>${d.teachers}</td><td>${note}</td></tr>`}).join('')
+}
+
+// ===== Review =====
+function activeGrade12Classes(){
+  if(!state||!oTeacher.value)return [];
+  const subject=oSubject.value||teacherPrimarySubject(oTeacher.value);
+  const assigned=new Set(
+    state.requirements
+      .filter(r=>r.teacher===oTeacher.value && r.subject===subject && String(r.class_name).startsWith('12'))
+      .map(r=>r.class_name)
+  );
+  return state.classes
+    .filter(c=>c.active && Number(c.grade)===12 && assigned.has(c.class_name))
+    .map(c=>c.class_name);
+}
+function selectedReviewClasses(){
+  return [...document.querySelectorAll('.review-class-check:checked')].map(x=>x.value);
+}
+function renderReviewClassPicker(selected=[]){
+  if(!state)return;
+  const set=new Set(selected), classes=activeGrade12Classes();
+  if(!oTeacher.value){
+    reviewClassPicker.innerHTML='<span class="small">Chọn giáo viên để hiện các lớp 12 được phân công.</span>';
+  }else if(!classes.length){
+    reviewClassPicker.innerHTML='<span class="badge yellow">Giáo viên này chưa được phân công lớp 12 của môn ôn.</span>';
+  }else{
+    reviewClassPicker.innerHTML=classes.map(c=>`<label class="review-class-chip ${set.has(c)?'checked':''}">
+      <input class="review-class-check" type="checkbox" value="${esc(c)}" ${set.has(c)?'checked':''} onchange="reviewClassChanged(this)"> ${esc(c)}
+    </label>`).join('');
+  }
+  updateReviewClassCount();
+}
+function reviewClassChanged(el){
+  el.closest('.review-class-chip')?.classList.toggle('checked',el.checked);
+  updateReviewClassCount();
+}
+function updateReviewClassCount(){
+  const n=selectedReviewClasses().length;
+  reviewClassCount.textContent=n?`Đã chọn ${n} lớp`:'Chưa chọn lớp';
+}
+function selectAllReviewClasses(v){
+  document.querySelectorAll('.review-class-check').forEach(x=>{x.checked=v;x.closest('.review-class-chip')?.classList.toggle('checked',v)});
+  updateReviewClassCount();
+}
+function teacherPrimarySubject(name){
+  return state.teachers.find(t=>t.name===name)?.primary_subject||'';
+}
+function reviewTeacherChanged(){
+  oSubject.value=teacherPrimarySubject(oTeacher.value);
+  renderReviewClassPicker([]);
+  previewReviewLoad();
+}
+async function previewReviewLoad(){
+  if(!state||!oTeacher.value){
+    reviewLoadPreview.innerHTML='Chọn giáo viên để xem tải dự kiến.';return;
+  }
+  const p=Number(oPeriods.value||0),end=Number(oEnd.value||state.settings.weeks);
+  if(!(p>0)){reviewLoadPreview.innerHTML='<span class="badge red">Số tiết phải lớn hơn 0</span>';return}
+  try{
+    const q='/api/preview_review?teacher='+encodeURIComponent(oTeacher.value)+
+      '&periods='+encodeURIComponent(p)+'&start='+encodeURIComponent(oStart.value||'')+
+      '&end='+encodeURIComponent(end)+'&id='+encodeURIComponent(oId.value||'')+
+      '&week='+encodeURIComponent(weekInput.value||1);
+    const x=await api(q);
+    const a=x.after_start,m=x.max_after;
+    let label=x.hypothetical?`Nếu bắt đầu từ tuần đang xem (${x.view_week})`:`Từ tuần ${x.start_week}`;
+    let diff=a.diff>0?`<span class="badge red">vượt ${nfmt(a.diff)}</span>`:`<span class="badge green">còn ${nfmt(-a.diff)}</span>`;
+    reviewLoadPreview.innerHTML=`<div class="small">${label}</div>
+      <div><span class="big">${nfmt(a.total)}/${nfmt(a.standard)}</span> ${diff}</div>
+      <div class="small">Cao nhất trong giai đoạn dự kiến: <b>${nfmt(m.total)}/${nfmt(m.standard)}</b> tại tuần ${m.week}${m.diff>0?' · vượt '+nfmt(m.diff):''}</div>`;
+  }catch(e){reviewLoadPreview.innerHTML='<span class="badge red">'+esc(e.message)+'</span>'}
+}
+function renderReview(){
+  if(!state)return;
+  const w=Number(weekInput.value||1);
+  reviewBody.innerHTML=state.review_jobs.map(r=>{
+    const pv=state.review_previews?.[String(r.id)];
+    const after=pv?.after_start||null;
+    const load=after?(after.diff>0?`<span class="badge red">${nfmt(after.total)}/${nfmt(after.standard)} · +${nfmt(after.diff)}</span>`:`<span class="badge green">${nfmt(after.total)}/${nfmt(after.standard)}</span>`):'';
+    let st=r.start_week==null?'<span class="badge yellow">Chưa chọn tuần</span>':w<r.start_week?'<span class="badge">Chưa bắt đầu</span>':w<=r.end_week?'<span class="badge green">Đang tính tải</span>':'<span class="badge">Đã kết thúc</span>';
+    let cls=(r.classes||[]).length?(r.classes||[]).join(', '):'<span class="badge yellow">Chưa chọn lớp</span>';
+    return `<tr>
+      <td><b>${esc(r.teacher)}</b></td><td>${esc(shortSub(r.subject||''))}</td><td>${typeof cls==='string'?cls:esc(cls)}</td>
+      <td><b>${nfmt(r.periods_per_week)}</b></td><td>${r.start_week??''}</td><td>${r.end_week}</td><td>${load}</td><td>${st}</td>
+      <td><button onclick='editReview(${JSON.stringify(r).replace(/'/g,"&#39;")})'>Sửa</button> <button class="danger" onclick="deleteReview(${r.id})">Xóa</button></td>
+    </tr>`;
+  }).join('');
+}
+function editReview(r){
+  showPage('review');oId.value=r.id;oTeacher.value=r.teacher;oSubject.value=r.subject||teacherPrimarySubject(r.teacher);
+  oPeriods.value=r.periods_per_week;oStart.value=r.start_week??'';oEnd.value=r.end_week;oNote.value=r.note||'';
+  renderReviewClassPicker(r.classes||[]);previewReviewLoad();
+}
+function clearReview(){
+  oId.value='';oTeacher.value='';oSubject.value='';oPeriods.value=3;oStart.value='';oEnd.value=state.settings.weeks;oNote.value='';
+  renderReviewClassPicker([]);reviewLoadPreview.innerHTML='Chọn giáo viên để xem tải dự kiến.';
+}
+async function saveReview(){
+  try{
+    const classes=selectedReviewClasses();
+    if(!oTeacher.value){alert('Hãy chọn giáo viên.');return}
+    if(!classes.length){alert('Hãy chọn ít nhất một lớp ôn.');return}
+    await api('/api/review/save',{
+      id:oId.value||null,teacher:oTeacher.value,subject:oSubject.value,
+      classes,periods_per_week:oPeriods.value,start_week:oStart.value||null,
+      end_week:oEnd.value,note:oNote.value
+    });
+    clearReview();await reload()
+  }catch(e){alert(e.message)}
+}
+async function deleteReview(id){if(confirm('Xóa phân công ôn tốt nghiệp này?')){await api('/api/review/delete',{id});await reload()}}
+
+function exportExcel(){window.location='/export.xlsx?week='+encodeURIComponent(exportReferenceWeek())+'&'+exportRangeQuery()}
+async function shutdownApp(){
+  if(!confirm('Thoát phần mềm? Dữ liệu đã lưu sẽ được giữ lại.'))return;
+  try{await api('/api/shutdown',{});document.body.innerHTML='<div style="font-family:Segoe UI;padding:40px"><h2>Phần mềm đã đóng.</h2><p>Có thể đóng tab trình duyệt này.</p></div>'}catch(e){}
+}
+function closeModal(){confirmModal.classList.remove('show');pendingDrop=null}
+
+reload();
+</script>
+</body>
+</html>
