@@ -1,0 +1,15 @@
+name: phan_cong_v10_3
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  webview_flutter: ^4.13.0
+  shared_preferences: ^2.5.3
+
+flutter:
+  uses-material-design: true
