@@ -4,10 +4,9 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'source_parts/part05.b64'
-      - 'source_parts/part08.b64'
-      - 'source_parts/part09.b64'
-      - 'source_parts/part13.b64'
+      - 'source_parts/**'
+      - 'repair8/**'
+      - 'prepare_source.py'
       - '.github/workflows/unpack-source.yml'
   workflow_dispatch:
 
@@ -31,7 +30,7 @@ jobs:
 
       - name: Replace transfer parts with real project files
         run: |
-          rm -rf source_parts
+          rm -rf source_parts repair repair8 repair_test
           rm -f prepare_source.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
