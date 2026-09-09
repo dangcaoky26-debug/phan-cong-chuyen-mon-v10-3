@@ -1,6 +1,7 @@
 from pathlib import Path
 import base64
 import hashlib
+import os
 import zipfile
 
 EXPECTED_SIZE = 133928
@@ -10,7 +11,20 @@ parts = sorted(Path("source_parts").glob("part*.b64"))
 if len(parts) != 14:
     raise SystemExit(f"Need 14 parts, got {len(parts)}")
 
-payload = b"".join(base64.b64decode(p.read_text(encoding="ascii").strip()) for p in parts)
+texts = []
+for p in parts:
+    if p.name == "part09.b64":
+        text = "".join(
+            (Path("repair8") / f"p09_{i}.txt").read_text(encoding="ascii").strip()
+            for i in range(8)
+        )
+        if len(text) != 13336:
+            raise SystemExit(f"part09 repair length mismatch: {len(text)}")
+    else:
+        text = p.read_text(encoding="ascii").strip()
+    texts.append(text)
+
+payload = b"".join(base64.b64decode(text) for text in texts)
 if len(payload) != EXPECTED_SIZE:
     raise SystemExit(f"Size mismatch: {len(payload)} != {EXPECTED_SIZE}")
 sha = hashlib.sha256(payload).hexdigest()
@@ -38,7 +52,7 @@ p.write_text(s, encoding="utf-8")
 
 Path("requirements.txt").write_text("PyMuPDF>=1.24,<2\n", encoding="utf-8")
 Path("render.yaml").write_text(
-    """services:\n  - type: web\n    name: phan-cong-chuyen-mon-v10-3\n    runtime: python\n    buildCommand: pip install -r requirements.txt\n    startCommand: python phan_cong_v10_3_dragdrop.py\n""",
+    """services:\n  - type: web\n    name: phan-cong-chuyen-mon-v10-3\n    runtime: python\n    plan: free\n    buildCommand: pip install -r requirements.txt\n    startCommand: python phan_cong_v10_3_dragdrop.py\n    envVars:\n      - key: HOST\n        value: 0.0.0.0\n""",
     encoding="utf-8",
 )
 print(f"Source verified: {len(payload)} bytes, sha256={sha}")
