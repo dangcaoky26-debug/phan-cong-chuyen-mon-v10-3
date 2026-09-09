@@ -4,7 +4,11 @@ on:
   push:
     branches: [ main ]
     paths:
+      - 'source_parts/part05.b64'
+      - 'source_parts/part08.b64'
+      - 'source_parts/part09.b64'
       - 'source_parts/part13.b64'
+      - '.github/workflows/unpack-source.yml'
   workflow_dispatch:
 
 permissions:
