@@ -2,12 +2,12 @@
   "active_year": "2026-2027",
   "settings": {
     "weeks": 35,
-    "teacher_per_class": 2.25,
+    "teacher_per_class": 1.8,
     "default_teacher_standard": 17,
     "review_periods_per_week": 3,
     "sources": {
       "program": "TT 12/2022/TT-BGDĐT",
-      "staffing": "TT 20/2023/TT-BGDĐT",
+      "staffing": "Định mức GDTX: 1,8 GV/lớp",
       "teacher_load": "TT 04/2026/TT-BGDĐT"
     },
     "program_source_title": "Chương trình GDTX cấp THPT",
