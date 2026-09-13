@@ -1,0 +1,5 @@
+# Dữ liệu vận hành cục bộ - không đưa lên GitHub
+phan_cong_v10_3.db
+*.db
+__pycache__/
+*.pyc
