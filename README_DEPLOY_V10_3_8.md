@@ -1,0 +1,1 @@
+Nhánh này nhận bản V10.3.8 tối ưu hiệu năng để kiểm tra trước khi gộp vào main.
